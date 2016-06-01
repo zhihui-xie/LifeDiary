@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/fragment_main_photo_imageview"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/photo"
+        android:layout_margin="20dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/fragment_main_title_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/title_text_size"
+        android:text="@string/title"
+        android:layout_marginLeft="10dp"
+        android:singleLine="true"
+        android:layout_below="@+id/fragment_main_photo_imageview"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_main_date_textview"
+        android:text="June 1st, 2016"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/fragment_main_title_textview"/>
+
+        <TextView
+            android:id="@+id/fragment_main_temperature_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/menu_text_size"
+            android:text="Sunny"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fragment_main_date_textview"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/fragment_main_text_scrollview"
+            android:layout_below="@+id/fragment_main_temperature_textview"
+
+            >
+
+            <TextView
+                android:id="@+id/fragment_main_text_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/menu_text_size"
+                android:text="@string/text"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                />
+        </ScrollView>
+
+
+        <TextView
+            android:id="@+id/fragment_main_location_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sydney"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            />
+    <!-- The frame layout is here since we will be showing either
+   the empty view or the list view.  -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" >
+        <!-- Here is the list. Since we are using a ListActivity, we
+             have to call it "@android:id/list" so ListActivity will
+             find it -->
+        <ListView android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawSelectorOnTop="false"/>
+    </FrameLayout>
+
+</RelativeLayout>
