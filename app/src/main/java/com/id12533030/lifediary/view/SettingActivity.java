@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.id12533030.lifediary.util.Constants;
+import com.id12533030.lifediary.util.ImageTool;
 import com.id12533030.lifediary.util.MainMenu;
 import com.id12533030.lifediary.R;
 
@@ -28,7 +29,7 @@ public class SettingActivity extends AppCompatActivity {
         mImageView = (ImageView) findViewById(R.id.setting_main_profile_imageview);
 
         try {
-                    MainActivity.showImage(Constants.PIC_URLS[4] + "/island.jpg", mImageView);
+                    ImageTool.showImage(Constants.PIC_URLS[4] + "/island.jpg", mImageView);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

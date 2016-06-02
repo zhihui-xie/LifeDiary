@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,10 +18,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.id12533030.lifediary.adapter.MyFragmentPagerAdapter;
+import com.id12533030.lifediary.model.Homepage;
+import com.id12533030.lifediary.model.HomepageManager;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
-import com.id12533030.lifediary.adapter.MyFragmentPagerAdapter;
 import com.id12533030.lifediary.R;
+import com.orm.SugarContext;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -40,15 +44,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, false);
-//        addFragment(new MainFragment(), false, R.id.container);
         createImageFolder();
+
+        SugarContext.init(this);
+        Homepage m = new Homepage(1, "Sunny", "Homepage", "Sydney", Constants.PIC_URLS[0] + "/beach.jpg", 1000);
+        m.save();
+        Homepage mm = new Homepage(2, "Rain", "Second Page", "Guangzhou", Constants.PIC_URLS[0] + "/view.jpg", 2000);
+        mm.save();
+        final Homepage mmm = new Homepage(3, "Windy", "Third Page", "London", Constants.PIC_URLS[0] + "/sea.jpg", 3000);
+        mmm.save();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, Constants.PIC_URLS[0] + "/view.jpg", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+                Snackbar.make(view, mmm.getTitle() , Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 //                try {
 //                    showImage(Constants.PIC_URLS[0] + "/view.jpg", mImageView);
 //                } catch (Exception e) {
@@ -57,10 +69,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        HomepageManager homepageManager = new HomepageManager();
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
-//        initFragments();
-        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager);
+        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepageManager);
         mViewPager.setAdapter(mPagerAdapter);
+
+
+
     }
 
     @Override
@@ -68,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         mImageView = (ImageView) findViewById(R.id.fragment_main_photo_imageview);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
@@ -105,23 +122,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static void showImage(String url, ImageView imageView) throws IOException {
-        File fs = new File(url);
-        if (fs.exists()) {
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 2;
-            Bitmap btp = BitmapFactory.decodeFile(fs.getAbsolutePath(), options);
-            imageView.setImageBitmap(btp);
-        }
-    }
-
-//    private void initFragments() {
-//        mPageview = new ArrayList<>();
-//        mPageview.add(new MainFragment());
-//        mPageview.add(new MainFragment());
-//        mPageview.add(new MainFragment());
-//
-//    }
 
 
 }

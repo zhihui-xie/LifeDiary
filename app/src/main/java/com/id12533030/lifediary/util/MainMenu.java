@@ -72,7 +72,7 @@ public class MainMenu implements OnMenuItemClickListener{
 
     }
 
-    private List<MenuObject> getMenuObjects() {
+    private static List<MenuObject> getMenuObjects() {
         List<MenuObject> menuObjects = new ArrayList<>();
 
         MenuObject close = new MenuObject();
