@@ -28,12 +28,13 @@ public class DiaryActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true);
 
-        Calendar nextMonth = Calendar.getInstance();
-        nextMonth.add(Calendar.MONTH, 1);
+//        Calendar nextMonth = Calendar.getInstance();
+//        nextMonth.add(Calendar.MONTH, 1);
 
         final CalendarPickerView calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
+        Date start = new Date(116,1,1);
         Date today = new Date();
-        calendar.init(today, nextMonth.getTime()).withSelectedDate(today);
+        calendar.init(start, today);
         calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
             @Override
             public void onDateSelected(Date date) {

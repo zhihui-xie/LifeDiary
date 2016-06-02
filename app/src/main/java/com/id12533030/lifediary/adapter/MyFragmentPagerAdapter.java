@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.id12533030.lifediary.view.ArrayListFragment;
+import com.id12533030.lifediary.view.MainFragment;
 
 
 /**
@@ -21,12 +21,8 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fm = ArrayListFragment.newInstance(position);
-//        TextView title = (TextView) fm.getView().findViewById(R.id.fragment_main_title_textview);
-//        if (position == 3){
-//            title.setText("This is the third page!");
-//        }
-        return fm;
+        return MainFragment.newInstance(position);
+
     }
 
     @Override
