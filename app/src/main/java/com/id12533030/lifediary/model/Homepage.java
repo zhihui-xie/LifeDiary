@@ -4,10 +4,12 @@ package com.id12533030.lifediary.model;
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 
+import java.io.Serializable;
+
 /**
  * Created by LENOVO on 2016/6/2.
  */
-public class Homepage extends SugarRecord{
+public class Homepage extends SugarRecord implements Serializable {
 
 //    @Column(name = "id", unique = true)
 //    private int mId;
