@@ -16,7 +16,7 @@
 
     <string name="setting_main_age_label">Age</string>
     <string name="setting_main_age">Your age</string>
-    <string name="setting_main_description_label">Description</string>
+    <string name="setting_main_description_label">-- Description --</string>
     <string name="add_homepage_name">Add Homepage</string>
     <string name="setting_main_description">Your desription</string>
 </resources>

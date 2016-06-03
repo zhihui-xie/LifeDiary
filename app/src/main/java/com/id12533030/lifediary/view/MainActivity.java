@@ -30,9 +30,7 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
-
     private ViewPager mViewPager = null;
-
     private PagerAdapter mPagerAdapter;
 
     @Override
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         createImageFolder();
 
-        SugarContext.init(this);
+
         Homepage m = new Homepage("Sunny", "Homepage", "Sydney", Constants.PIC_URLS[0] + "/beach.jpg", 1000);
         m.save();
         Homepage mm = new Homepage("Rain", "Second Page", "Guangzhou", Constants.PIC_URLS[0] + "/view.jpg", 2000);
