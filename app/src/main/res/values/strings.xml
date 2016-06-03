@@ -9,13 +9,14 @@
     <string name="day_name">Day</string>
     <string name="plan_name">Plan</string>
     <string name="setting_name">Setting</string>
-    <string name="setting_main_name">Allen</string>
+    <string name="setting_main_name">Your name</string>
     <string name="setting_main_name_label">Name</string>
     <string name="setting_main_gender_label">Gender</string>
-    <string name="setting_main_gender">Male</string>
+    <string name="setting_main_gender">Your gender</string>
 
     <string name="setting_main_age_label">Age</string>
-    <string name="setting_main_age">22</string>
+    <string name="setting_main_age">Your age</string>
     <string name="setting_main_description_label">Description</string>
     <string name="add_homepage_name">Add Homepage</string>
+    <string name="setting_main_description">Your desription</string>
 </resources>

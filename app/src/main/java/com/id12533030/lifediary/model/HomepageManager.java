@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by LENOVO on 2016/6/1.
  */
-public class HomepageManager extends SugarRecord {
+public class HomepageManager {
 
 
     private List<Homepage> mHomepageList;
