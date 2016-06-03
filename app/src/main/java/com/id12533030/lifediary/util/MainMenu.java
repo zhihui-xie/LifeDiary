@@ -22,32 +22,38 @@ import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by LENOVO on 2016/5/30.
  */
-public class MainMenu implements OnMenuItemClickListener{
+public class MainMenu implements OnMenuItemClickListener {
     private AppCompatActivity mAppCompatActivity;
     private FragmentManager mFragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
 
-    public MainMenu(AppCompatActivity appCompatActivity, FragmentManager fm, boolean checkBack) {
+    public MainMenu(AppCompatActivity appCompatActivity) {
+        mAppCompatActivity = appCompatActivity;
+
+    }
+
+    public MainMenu(AppCompatActivity appCompatActivity, FragmentManager fm, boolean checkBack, boolean addMenu) {
         mAppCompatActivity = appCompatActivity;
         mFragmentManager = fm;
         initToolbar(checkBack);
-        initMenuFragment();
+        if (addMenu) {
+            initMenuFragment();
+        }
     }
 
-    private void initToolbar(boolean checkBack) {
+    public void initToolbar(boolean checkBack) {
         Toolbar mToolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.toolbar);
         TextView mToolBarTextView = (TextView) mAppCompatActivity.findViewById(R.id.text_view_toolbar_title);
         mAppCompatActivity.setSupportActionBar(mToolbar);
         mAppCompatActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
         mToolBarTextView.setText(mAppCompatActivity.getTitle().toString());
-        if (checkBack){
+        if (checkBack) {
             mAppCompatActivity.getSupportActionBar().setHomeButtonEnabled(true);
             mAppCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             mToolbar.setNavigationIcon(R.drawable.btn_back);
@@ -62,7 +68,7 @@ public class MainMenu implements OnMenuItemClickListener{
 
     }
 
-    private void initMenuFragment() {
+    public void initMenuFragment() {
         MenuParams menuParams = new MenuParams();
         menuParams.setActionBarSize((int) mAppCompatActivity.getResources().getDimension(R.dimen.tool_bar_height));
         menuParams.setMenuObjects(getMenuObjects());
@@ -100,7 +106,7 @@ public class MainMenu implements OnMenuItemClickListener{
     private void onBackPressed() {
         if (mMenuDialogFragment != null && mMenuDialogFragment.isAdded()) {
             mMenuDialogFragment.dismiss();
-        } else{
+        } else {
             mAppCompatActivity.finish();
         }
     }
@@ -127,7 +133,7 @@ public class MainMenu implements OnMenuItemClickListener{
     public void onMenuItemClick(View clickedView, int position) {
 //        Toast.makeText(mAppCompatActivity.getBaseContext(), "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
         Intent myIntent;
-        switch (position){
+        switch (position) {
             case 1:
                 myIntent = new Intent(mAppCompatActivity, MainActivity.class);
                 mMenuDialogFragment.startActivityForResult(myIntent, Constants.REQUEST_HOMEPAGE);

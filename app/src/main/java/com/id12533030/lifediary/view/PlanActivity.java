@@ -21,7 +21,7 @@ public class PlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
     }
 
     @Override

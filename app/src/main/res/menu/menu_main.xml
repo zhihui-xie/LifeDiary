@@ -5,7 +5,7 @@
     <item
         android:id="@+id/context_menu"
         android:title="@string/context_menu"
-        android:icon="@drawable/btn_add"
+        android:icon="@drawable/ic_menu"
         android:orderInCategory="100"
         app:showAsAction="always" />
 </menu>

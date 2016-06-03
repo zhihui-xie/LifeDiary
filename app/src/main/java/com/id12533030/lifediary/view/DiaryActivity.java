@@ -26,7 +26,7 @@ public class DiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
 
 //        Calendar nextMonth = Calendar.getInstance();
 //        nextMonth.add(Calendar.MONTH, 1);

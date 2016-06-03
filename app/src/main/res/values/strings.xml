@@ -2,7 +2,7 @@
     <string name="app_name">Life Diary</string>
     <string name="action_settings">Settings</string>
 
-    <string name="text">Welcome! This is a diary app..The code styles below are strict rules, not guidelines or recommendations. Contributions to Android that do not adhere to these rules are generally not accepted. We recognize that not all existing code follows these rules, but we expect all new code to be compliant..</string>
+    <string name="text">This is your memorable moment.</string>
     <string name="title">My Description</string>
     <string name="context_menu">Context menu</string>
     <string name="diary_name">Diary</string>
@@ -17,4 +17,5 @@
     <string name="setting_main_age_label">Age</string>
     <string name="setting_main_age">22</string>
     <string name="setting_main_description_label">Description</string>
+    <string name="add_homepage_name">Add Homepage</string>
 </resources>

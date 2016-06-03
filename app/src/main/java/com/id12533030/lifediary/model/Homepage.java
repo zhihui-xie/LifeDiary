@@ -9,8 +9,8 @@ import com.orm.dsl.Column;
  */
 public class Homepage extends SugarRecord{
 
-    @Column(name = "ID", unique = true)
-    private int mId;
+//    @Column(name = "id", unique = true)
+//    private int mId;
     @Column(name = "url")
     private String mPhotoUrl;
     @Column(name = "title")
@@ -24,9 +24,9 @@ public class Homepage extends SugarRecord{
 
     public Homepage(){}
 
-    public Homepage(int id, String weather, String title, String location, String url, long date) {
+    public Homepage(String weather, String title, String location, String url, long date) {
         super();
-        mId = id;
+//        mId = id;
         mPhotoUrl = url;
         mTitle = title;
         mDate = date;
@@ -38,9 +38,9 @@ public class Homepage extends SugarRecord{
         return mPhotoUrl;
     }
 
-    public int getmId() {
-        return mId;
-    }
+//    public int getIndex() {
+//        return mId;
+//    }
 
     public String getTitle() {
         return mTitle;

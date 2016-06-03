@@ -25,7 +25,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mImageView = (ImageView) findViewById(R.id.setting_main_profile_imageview);
 
         try {

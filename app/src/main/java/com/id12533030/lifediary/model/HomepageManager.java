@@ -17,7 +17,6 @@ public class HomepageManager extends SugarRecord {
     public HomepageManager() {
         mHomepageList = new ArrayList<>();
         mHomepageList = Homepage.listAll(Homepage.class);
-
     }
 
     public int getSize() {

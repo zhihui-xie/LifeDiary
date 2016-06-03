@@ -31,9 +31,13 @@
         <activity android:name=".view.SettingActivity"
             android:label="@string/setting_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.AddHomePage"
+            android:label="@string/add_homepage_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
 
-        <meta-data android:name="DATABASE" android:value="life_diary_sugar.db" />
-        <meta-data android:name="VERSION" android:value="5" />
+        <meta-data android:name="DATABASE" android:value="life_diary_sugar_orm.db" />
+        <meta-data android:name="VERSION" android:value="9" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.id12533030.lifediary.model" />
     </application>

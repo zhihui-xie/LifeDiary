@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/menu_item_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/add_homepage_photo_imageview"
+                    android:layout_width="@dimen/fragment_main_image_width"
+                    android:layout_height="@dimen/fragment_main_image_height"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/fragment_main_image_margin"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/photo" />
+
+                <EditText
+                    android:id="@+id/add_homepage_title_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_homepage_photo_imageview"
+                    android:layout_marginLeft="10dp"
+                    android:ellipsize="end"
+                    android:hint="@string/title"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/add_homepage_date_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/add_homepage_title_edittext"
+                    android:layout_marginRight="10dp"
+                    android:hint="June 1st, 2016"
+                    android:inputType="date"/>
+
+                <EditText
+                    android:id="@+id/add_homepage_weather_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/add_homepage_date_textview"
+                    android:layout_marginRight="10dp"
+                    android:hint="Sunny"
+                    android:textSize="@dimen/menu_text_size" />
+
+
+
+                    <EditText
+                        android:id="@+id/add_homepage_text_edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/text"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/menu_text_size"
+                        android:layout_below="@+id/add_homepage_weather_edittext"
+                        />
+
+
+
+                <EditText
+                    android:id="@+id/add_homepage_location_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_homepage_text_edittext"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Sydney" />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/add_homepage_add_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/fab_margin_down"
+                    android:layout_marginRight="@dimen/fab_margin"
+                    android:src="@drawable/ic_ok"
+                    android:layout_below="@+id/add_homepage_location_edittext"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+

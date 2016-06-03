@@ -18,6 +18,7 @@ public class Constants {
     public final static int REQUEST_DAY = 3;
     public final static int REQUEST_PLAN = 4;
     public final static int REQUEST_SETTING = 5;
+    public final static int REQUEST_ADD_HOMEPAGE = 6;
     public final static String PIC_URL = Environment.getExternalStorageDirectory().getPath().toString() + "/LifeDiary/Image/";
     public final static String[] PIC_URLS = {PIC_URL + "Homepage", PIC_URL + "Diary", PIC_URL + "Day", PIC_URL + "Plan", PIC_URL + "Setting"};
 

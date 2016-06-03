@@ -6,15 +6,20 @@ import java.util.Date;
 /**
  * Created by LENOVO on 2016/6/2.
  */
-public class DataProcess {
-    public DataProcess(){}
+public class DateProcess {
+    public DateProcess(){}
 
     /**
      * Format the date to a user friendly format
      *
      * @return
      */
-    public String getDateAsString(long date) {
+    public static String getDatetimeAsString(long date) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss  dd-MM-yyyy");
+        return format.format(new Date(date));
+    }
+
+    public static String getDateAsString(long date) {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         return format.format(new Date(date));
     }

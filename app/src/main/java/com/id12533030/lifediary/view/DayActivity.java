@@ -21,7 +21,7 @@ public class DayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.day_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager,true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
     }
 
     @Override
