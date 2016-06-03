@@ -21,21 +21,19 @@ public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
     HomepageManager mHomepageManager;
     ArrayList<Homepage> mHomepageList;
 
-    public MyFragmentPagerAdapter(FragmentManager fragmentManager, HomepageManager homepageManager) {
+    public MyFragmentPagerAdapter(FragmentManager fragmentManager, ArrayList<Homepage> homepageList) {
         super(fragmentManager);
-        mHomepageManager = homepageManager;
-        mHomepageList = mHomepageManager.getHomepages();
+
+        mHomepageList = homepageList;
 
     }
 
 
     @Override
     public Fragment getItem(int position) {
-//        Collections.reverse(mHomepageList);
-        Homepage homepage = mHomepageList.get(mHomepageList.size() - position - 1);
-        Log.i("position", mHomepageList.size() - position - 1 + "");
-        Log.i("title", homepage.getTitle());
-        return MainFragment.newInstance(homepage);
+        Log.i("position", position + "");
+        Log.i("title", mHomepageList.get(position).getTitle());
+        return MainFragment.newInstance( mHomepageList.get(position));
     }
 
     @Override

@@ -23,6 +23,8 @@ import com.id12533030.lifediary.util.MainMenu;
 import com.orm.SugarContext;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,8 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab.setOnClickListener(this);
 
         HomepageManager homepageManager = new HomepageManager();
+        ArrayList<Homepage> homepages = homepageManager.getHomepages();
+        Collections.reverse(homepages);
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
-        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepageManager);
+        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepages);
         mViewPager.setAdapter(mPagerAdapter);
 
 

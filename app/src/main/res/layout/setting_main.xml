@@ -33,14 +33,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/setting_main_name_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="3"
-                android:editable="true"
+                android:hint="@string/setting_main_name"
                 android:singleLine="true"
-                android:text="@string/setting_main_name"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -59,14 +59,14 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/setting_main_gender_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="3"
-                android:editable="true"
+                android:hint="@string/setting_main_gender"
                 android:singleLine="true"
-                android:text="@string/setting_main_gender"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -85,15 +85,16 @@
                 android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/setting_main_age_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:layout_weight="3"
-                android:editable="true"
-                android:numeric="integer"
+
+                android:hint="@string/setting_main_age"
+                android:inputType="number"
                 android:singleLine="true"
-                android:text="@string/setting_main_age"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -107,13 +108,15 @@
 
 
         <EditText
+            android:id="@+id/setting_main_description_edittext"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_margin="20dp"
-            android:editable="true"
-            android:gravity="left|top" />
+            android:gravity="left|top"
+            android:hint="@string/setting_main_description" />
 
         <Button
+            android:id="@+id/setting_main_ok_button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
