@@ -43,13 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         createImageFolder();
 
-        SugarContext.init(this);
-        Homepage m = new Homepage("Sunny", "Homepage", "Sydney", Constants.PIC_URLS[0] + "/beach.jpg", 1000);
-        m.save();
-        Homepage mm = new Homepage("Rain", "Second Page", "Guangzhou", Constants.PIC_URLS[0] + "/view.jpg", 2000);
-        mm.save();
-        Homepage mmm = new Homepage("Windy", "Third Page", "London", Constants.PIC_URLS[0] + "/sea.jpg", 3000);
-        mmm.save();
+//        Homepage m = new Homepage("Sunny", "Homepage", "Sydney", Constants.PIC_URLS[0] + "/beach.jpg", 1000);
+//        m.save();
+//        Homepage mm = new Homepage("Rain", "Second Page", "Guangzhou", Constants.PIC_URLS[0] + "/view.jpg", 2000);
+//        mm.save();
+//        Homepage mmm = new Homepage("Windy", "Third Page", "London", Constants.PIC_URLS[0] + "/sea.jpg", 3000);
+//        mmm.save();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         HomepageManager homepageManager = new HomepageManager();
         ArrayList<Homepage> homepages = homepageManager.getHomepages();
-        Collections.reverse(homepages);
+//        Collections.reverse(homepages);
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
         mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepages);
         mViewPager.setAdapter(mPagerAdapter);

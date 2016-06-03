@@ -8,11 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.model.Homepage;
-import com.id12533030.lifediary.model.HomepageManager;
 import com.id12533030.lifediary.util.ImageTool;
 
 import java.io.IOException;
@@ -23,8 +21,9 @@ import java.io.IOException;
 public class MainFragment extends Fragment {
     int mIndex;
     private static final String NUM_KEY = "num";
-    private static Homepage mHomepage;
+    private Homepage mHomepage;
     private boolean mHasLoadedOnce = false;
+    private static final String PAGE_KEY = "PAGE";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_main, container, false);
@@ -32,12 +31,14 @@ public class MainFragment extends Fragment {
 
     public static MainFragment newInstance(Homepage homepage) {
         MainFragment fragment = new MainFragment();
-        mHomepage = homepage;
-
+//        mHomepage = homepage;
+        Bundle args = new Bundle();
+        args.putSerializable("PAGE", homepage);
         // Supply num input as an argument.
 //        Bundle args = new Bundle();
 //        args.putInt(NUM_KEY, num);
 //        fragment.setArguments(args);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -47,6 +48,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mHomepage = (Homepage) getArguments().getSerializable(PAGE_KEY);
 //        mIndex = getArguments() != null ? getArguments().getInt(NUM_KEY) : 1;
     }
 
