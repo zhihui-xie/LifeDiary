@@ -1,4 +1,7 @@
-package com.id12533030.lifediary;
+package com.id12533030.lifediary.util;
+
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.orm.SugarApp;
 import com.orm.SugarContext;
@@ -17,5 +20,11 @@ public class App extends SugarApp {
     public void onTerminate() {
         SugarContext.terminate();
         super.onTerminate();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        MultiDex.install(this);
     }
 }
