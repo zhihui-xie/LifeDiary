@@ -20,7 +20,12 @@ public class Constants {
     public final static int REQUEST_SETTING = 5;
     public final static int REQUEST_ADD_HOMEPAGE = 6;
     public final static String PIC_URL = Environment.getExternalStorageDirectory().getPath().toString() + "/LifeDiary/Image/";
-    public final static String[] PIC_URLS = {PIC_URL + "Homepage", PIC_URL + "Diary", PIC_URL + "Day", PIC_URL + "Plan", PIC_URL + "Setting"};
+    public final static String[] PIC_URLS = {PIC_URL + "Homepage/", PIC_URL + "Diary/", PIC_URL + "Day/", PIC_URL + "Plan/", PIC_URL + "Setting/"};
+    public final static int PHOTO_REQUEST_GALLERY = 7;
+    public final static int PHOTO_REQUEST_CUT = 8;
+    public final static String PIC_FOMATE = ".png";
+    public static final int SETTING_INDEX = 1;
+    public final static String ADD_SUCCESSFULLY = "You add a new homepage successfully!";
 
 
 }

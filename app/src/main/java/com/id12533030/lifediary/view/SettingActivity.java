@@ -1,26 +1,31 @@
 package com.id12533030.lifediary.view;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.model.Setting;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.ImageTool;
 import com.id12533030.lifediary.util.MainMenu;
-import com.id12533030.lifediary.R;
+
+import java.io.IOException;
 
 /**
  * Created by LENOVO on 2016/5/31.
  */
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener{
+public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
     private ImageView mImageView;
@@ -30,6 +35,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private EditText mDescription;
     private Button mButton;
     private String mPhotoUrl;
+    private static final String UPDATE_SUCCESSFULLY = "You update information successfully!";
+    private static Bitmap mBitmap;
+    private ImageTool mImageTool;
+    private static final String PIC_NAME = "profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +47,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         init();
+        loadInfo();
         mButton.setOnClickListener(this);
-        mPhotoUrl = Constants.PIC_URLS[4] + "/island.jpg";
-        try {
-                    ImageTool.showImage(mPhotoUrl, mImageView);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        mImageView.setOnClickListener(this);
+        mImageTool = new ImageTool(this);
+
     }
 
     @Override
@@ -70,18 +77,75 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.setting_main_ok_button:
-                Setting setting = Setting.findById(Setting.class,1);
-                setting.setPhotoUrl(mName.getText().toString());
-                setting.setName(mName.getText().toString());
-                setting.setGender(mGender.getText().toString());
-                setting.setAge(Integer.parseInt(mAge.getText().toString()));
-                setting.setDescription(mDescription.getText().toString());
-                setting.save();
+                storeInfo();
+                Snackbar.make(v, UPDATE_SUCCESSFULLY, Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.setting_main_profile_imageview:
+                mImageTool.gallery();
                 break;
             default:
                 break;
         }
     }
+
+    private void storeInfo() {
+        Setting setting = new Setting();
+        if (Setting.listAll(Setting.class).size() != 0) {
+            setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
+        }
+        mPhotoUrl = Constants.PIC_URLS[4] + PIC_NAME + Constants.PIC_FOMATE;
+        if (mBitmap != null){
+            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[4], PIC_NAME);
+        }
+        setting.setPhotoUrl(mPhotoUrl);
+        setting.setName(mName.getText().toString());
+        setting.setGender(mGender.getText().toString());
+        int age = mAge.getText().toString().equals("") ? -1 : Integer.parseInt(mAge.getText().toString());
+        setting.setAge(age);
+        setting.setDescription(mDescription.getText().toString());
+        setting.save();
+    }
+
+    private void loadInfo() {
+        if (Setting.listAll(Setting.class).size() != 0) {
+            Setting setting = Setting.findById(Setting.class,  Constants.SETTING_INDEX);
+            mName.setText(setting.getName());
+            mGender.setText(setting.getGender());
+            String age = setting.getAge() != -1 ? String.valueOf(setting.getAge()) : "";
+            mAge.setText(age);
+            mDescription.setText(setting.getDescription());
+            try {
+                ImageTool.showImage(setting.getPhotoUrl(), mImageView, 300, 300);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch (requestCode){
+            case Constants.PHOTO_REQUEST_GALLERY:
+                if(data != null){
+                    Uri uri = data.getData();
+                    mImageTool.crop(uri);
+                }
+                break;
+            case Constants.PHOTO_REQUEST_CUT:
+                if (data != null){
+                    mBitmap = data.getParcelableExtra("data");
+                    if (mBitmap != null){
+                        mImageView.setImageBitmap(mBitmap);
+                    }
+                }
+            default:
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

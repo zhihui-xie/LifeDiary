@@ -9,8 +9,6 @@ import com.orm.dsl.Column;
 public class Setting extends SugarRecord {
 
 
-
-
     @Column(name = "url")
     private String mPhotoUrl;
     @Column(name = "name")
@@ -23,7 +21,8 @@ public class Setting extends SugarRecord {
     private String mDescription;
 
 
-    public Setting() {}
+    public Setting() {
+    }
 
     public Setting(String url, String name, String gender, int age, String description) {
         mPhotoUrl = url;

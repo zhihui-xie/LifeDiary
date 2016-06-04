@@ -11,8 +11,6 @@ import java.io.Serializable;
  */
 public class Homepage extends SugarRecord implements Serializable{
 
-//    @Column(name = "id", unique = true)
-//    private int mId;
     @Column(name = "url")
     private String mPhotoUrl;
     @Column(name = "title")
@@ -21,17 +19,22 @@ public class Homepage extends SugarRecord implements Serializable{
     private long mDate;
     @Column(name = "weather")
     private String mWeather;
+
+
+
+    @Column(name = "text")
+    private String mText;
     @Column(name = "location")
     private String mLocation;
 
     public Homepage(){}
 
-    public Homepage(String weather, String title, String location, String url, long date) {
+    public Homepage(String url, String title, long date, String weather,String text, String location) {
         super();
-//        mId = id;
         mPhotoUrl = url;
         mTitle = title;
         mDate = date;
+        mText = text;
         mWeather = weather;
         mLocation = location;
     }
@@ -40,9 +43,6 @@ public class Homepage extends SugarRecord implements Serializable{
         return mPhotoUrl;
     }
 
-//    public int getIndex() {
-//        return mId;
-//    }
 
     public String getTitle() {
         return mTitle;
@@ -60,5 +60,33 @@ public class Homepage extends SugarRecord implements Serializable{
         return mLocation;
     }
 
+
+    public void setPhotoUrl(String mPhotoUrl) {
+        this.mPhotoUrl = mPhotoUrl;
+    }
+
+    public void setTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public void setDate(long mDate) {
+        this.mDate = mDate;
+    }
+
+    public void setWeather(String mWeather) {
+        this.mWeather = mWeather;
+    }
+
+    public void setLocation(String mLocation) {
+        this.mLocation = mLocation;
+    }
+
+    public String getText() {
+        return mText;
+    }
+
+    public void setText(String mText) {
+        this.mText = mText;
+    }
 
 }

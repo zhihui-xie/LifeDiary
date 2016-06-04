@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/fragment_main_image_margin"
         android:scaleType="fitXY"
-        android:src="@drawable/photo" />
+        android:src="@mipmap/photo_default" />
 
     <TextView
         android:id="@+id/fragment_main_title_textview"

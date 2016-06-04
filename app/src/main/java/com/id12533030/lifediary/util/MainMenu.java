@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.id12533030.lifediary.R;
+import com.id12533030.lifediary.model.Setting;
 import com.id12533030.lifediary.view.DayActivity;
 import com.id12533030.lifediary.view.DiaryActivity;
 import com.id12533030.lifediary.view.MainActivity;
@@ -32,6 +33,7 @@ public class MainMenu implements OnMenuItemClickListener {
     private AppCompatActivity mAppCompatActivity;
     private FragmentManager mFragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
+    private static final String HELLO = "Hello ";
 
     public MainMenu(AppCompatActivity appCompatActivity) {
         mAppCompatActivity = appCompatActivity;
@@ -80,8 +82,13 @@ public class MainMenu implements OnMenuItemClickListener {
 
     private static List<MenuObject> getMenuObjects() {
         List<MenuObject> menuObjects = new ArrayList<>();
-
         MenuObject close = new MenuObject();
+
+        if (Setting.listAll(Setting.class).size() != 0) {
+            Setting setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
+            close.setTitle(HELLO + setting.getName());
+        }
+
         close.setResource(R.drawable.icn_close);
         MenuObject homePage = new MenuObject(Constants.HOMEPAGE_MENU);
         homePage.setResource(R.drawable.ic_homepage);

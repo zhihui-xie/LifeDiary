@@ -20,7 +20,6 @@ import com.id12533030.lifediary.model.Homepage;
 import com.id12533030.lifediary.model.HomepageManager;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
-import com.orm.SugarContext;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,38 +37,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         createImageFolder();
 
 
-        Homepage m = new Homepage("Sunny", "Homepage", "Sydney", Constants.PIC_URLS[0] + "/beach.jpg", 1000);
+        Homepage m = new Homepage(Constants.PIC_URLS[0] + "beach.jpg", "Homepage", 1000, "Sunny", "Homepage", "Sydney" );
         m.save();
-        Homepage mm = new Homepage("Rain", "Second Page", "Guangzhou", Constants.PIC_URLS[0] + "/view.jpg", 2000);
+        Homepage mm = new Homepage(Constants.PIC_URLS[0] + "view.jpg","Second Page",  2000, "Rain","Hahahaha", "Guangzhou");
         mm.save();
-        Homepage mmm = new Homepage("Windy", "Third Page", "London", Constants.PIC_URLS[0] + "/sea.jpg", 3000);
+        Homepage mmm = new Homepage(Constants.PIC_URLS[0] + "sea.jpg", "Third Page",  3000, "Windy", "Third dayssss", "London" );
         mmm.save();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
         fab.setOnClickListener(this);
 
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         HomepageManager homepageManager = new HomepageManager();
         ArrayList<Homepage> homepages = homepageManager.getHomepages();
         Collections.reverse(homepages);
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
         mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepages);
         mViewPager.setAdapter(mPagerAdapter);
-
-
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        ImageView imageView;
-//        imageView = (ImageView) findViewById(R.id.fragment_main_photo_imageview);
-//    }
-
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {

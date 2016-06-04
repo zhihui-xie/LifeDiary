@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/menu_item_background">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +18,8 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/profile_default"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +33,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_name_label"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/text_color"/>
 
             <EditText
                 android:id="@+id/setting_main_name_edittext"
@@ -56,7 +60,8 @@
                 android:layout_marginLeft="30sp"
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_gender_label"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/text_color"/>
 
             <EditText
                 android:id="@+id/setting_main_gender_edittext"
@@ -82,7 +87,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_age_label"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/text_color"/>
 
             <EditText
                 android:id="@+id/setting_main_age_edittext"
@@ -102,17 +108,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="@string/setting_main_description_label"
             android:textSize="20sp"
-            android:layout_gravity="center"/>
+            android:textColor="@color/text_color"/>
 
 
         <EditText
             android:id="@+id/setting_main_description_edittext"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="20dp"
+            android:layout_height="80dp"
+            android:layout_margin="15dp"
             android:gravity="left|top"
             android:hint="@string/setting_main_description" />
 
@@ -125,6 +132,7 @@
 
             android:text="OK" />
     </LinearLayout>
+    </ScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>

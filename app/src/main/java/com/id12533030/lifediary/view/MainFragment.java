@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.model.Homepage;
+import com.id12533030.lifediary.util.DateProcess;
 import com.id12533030.lifediary.util.ImageTool;
 
 import java.io.IOException;
@@ -52,14 +53,22 @@ public class MainFragment extends Fragment {
     public void onStart() {
         super.onStart();
         ImageView imageView = (ImageView) this.getView().findViewById(R.id.fragment_main_photo_imageview);
+        TextView title = (TextView) this.getView().findViewById(R.id.fragment_main_title_textview);
+        TextView date = (TextView) this.getView().findViewById(R.id.fragment_main_date_textview);
+        TextView location = (TextView) this.getView().findViewById(R.id.fragment_main_location_textview);
+        TextView weather = (TextView) this.getView().findViewById(R.id.fragment_main_temperature_textview);
+        TextView text = (TextView) this.getView().findViewById(R.id.fragment_main_text_textview);
         try {
-            ImageTool.showImage(mHomepage.getmPhotoUrl(), imageView);
+            ImageTool.showImage(mHomepage.getmPhotoUrl(), imageView, 500, 500);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        TextView textView = (TextView) this.getView().findViewById(R.id.fragment_main_title_textview);
-        textView.setText(mHomepage.getTitle());
 
+        title.setText(mHomepage.getTitle());
+        location.setText(mHomepage.getLocation());
+        weather.setText(mHomepage.getWeather());
+        date.setText(String.valueOf(DateProcess.getDatetimeAsString(mHomepage.getDate())));
+        text.setText(mHomepage.getText());
     }
 
 
