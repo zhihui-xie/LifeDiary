@@ -23,10 +23,21 @@ public class Constants {
     public final static String[] PIC_URLS = {PIC_URL + "Homepage/", PIC_URL + "Diary/", PIC_URL + "Day/", PIC_URL + "Plan/", PIC_URL + "Setting/"};
     public final static int PHOTO_REQUEST_GALLERY = 7;
     public final static int PHOTO_REQUEST_CUT = 8;
-    public final static int REQUEST_MAP = 8;
+    public final static int REQUEST_MAP = 9;
+    public final static String REQUEST_MAP_RESULT = "Location Result";
     public final static String PIC_FOMATE = ".png";
     public static final int SETTING_INDEX = 1;
     public final static String ADD_SUCCESSFULLY = "You add a new homepage successfully!";
 
+
+    public static final int SUCCESS_RESULT = 0;
+    public static final int FAILURE_RESULT = 1;
+    public static final String PACKAGE_NAME =
+            "com.google.android.gms.location.sample.locationaddress";
+    public static final String RECEIVER = PACKAGE_NAME + ".RECEIVER";
+    public static final String RESULT_DATA_KEY = PACKAGE_NAME +
+            ".RESULT_DATA_KEY";
+    public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME +
+            ".LOCATION_DATA_EXTRA";
 
 }

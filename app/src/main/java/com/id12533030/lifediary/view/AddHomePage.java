@@ -43,6 +43,7 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     Homepage mHomepage;
     private static Bitmap mBitmap;
     private static int mPicNum = 0;
+    private static String mStrLoc = "";
 
 
     @Override
@@ -108,9 +109,9 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private void storeInfo() {
         mHomepage = new Homepage();
         String pictureName = String.valueOf(mPicNum);
-        String photoUrl = Constants.PIC_URLS[0] +  pictureName + Constants.PIC_FOMATE;
-        if (mBitmap != null){
-            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0],  pictureName);
+        String photoUrl = Constants.PIC_URLS[0] + pictureName + Constants.PIC_FOMATE;
+        if (mBitmap != null) {
+            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0], pictureName);
         }
         mHomepage.setPhotoUrl(photoUrl);
         mHomepage.setTitle(mTitle.getText().toString());
@@ -122,22 +123,27 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (requestCode){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
             case Constants.PHOTO_REQUEST_GALLERY:
-                if(data != null){
+                if (data != null) {
                     try {
                         ContentResolver resolver = getContentResolver();
                         Uri uri = data.getData();
                         mBitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(resolver, uri), 500, 500, true);
-                        if (mBitmap != null){
+                        if (mBitmap != null) {
                             mImageView.setImageBitmap(mBitmap);
                         }
-                    } catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 break;
+            case Constants.REQUEST_MAP:
+                if (data != null) {
+                    mStrLoc = data.getStringExtra(Constants.REQUEST_MAP_RESULT).toString();
+                    mLocation.setText(mStrLoc);
+                }
             default:
                 break;
         }
