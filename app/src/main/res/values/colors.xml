@@ -12,5 +12,9 @@
     <color name="float_action_button_location">#FF9800</color>
     <color name="float_action_button_weather">#FFEB3B</color>
     <color name="text_dark">#000000</color>
+    <color name="float_action_button_add_homepage">#D32F2F</color>
+    <color name="float_action_button_add_diary">#FFA000</color>
+    <color name="float_action_button_add_day">#4CAF50</color>
+    <color name="float_action_button_add_plan">#448AFF</color>
 
 </resources>

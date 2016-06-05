@@ -23,5 +23,6 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@drawable/ic_add"
-        android:layout_marginBottom="@dimen/fab_margin_down"/>
+        android:layout_marginBottom="@dimen/fab_margin_down"
+        app:backgroundTint ="@color/float_action_button_add_day"/>
 </android.support.design.widget.CoordinatorLayout>

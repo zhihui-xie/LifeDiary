@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/menu_item_background">
     <LinearLayout
@@ -27,6 +28,8 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@drawable/ic_add"
-        android:layout_marginBottom="@dimen/fab_margin_down"/>
+        android:layout_marginBottom="@dimen/fab_margin_down"
+        app:backgroundTint ="@color/float_action_button_add_homepage"
+        />
 
 </android.support.design.widget.CoordinatorLayout>
