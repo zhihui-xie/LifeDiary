@@ -38,7 +38,6 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private EditText mText;
     private FloatingActionButton mFab;
     private FloatingActionButton mFabLoc;
-    FloatingActionButton mFabWea;
     long mMomentDate;
     Homepage mHomepage;
     private static Bitmap mBitmap;
@@ -61,7 +60,6 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private void setListener() {
         mFab.setOnClickListener(this);
         mFabLoc.setOnClickListener(this);
-        mFabWea.setOnClickListener(this);
         mImageView.setOnClickListener(this);
     }
 
@@ -77,8 +75,6 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
             case R.id.add_homepage_location_fab:
                 intent = new Intent(AddHomePage.this, MapsActivity.class);
                 startActivityForResult(intent, Constants.REQUEST_MAP);
-                break;
-            case R.id.add_homepage_weather_fab:
                 break;
             case R.id.add_homepage_photo_imageview:
                 mImageTool.gallery();
@@ -98,7 +94,6 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
         mText = (EditText) findViewById(R.id.add_homepage_text_edittext);
         mFab = (FloatingActionButton) findViewById(R.id.add_homepage_add_fab);
         mFabLoc = (FloatingActionButton) findViewById(R.id.add_homepage_location_fab);
-        mFabWea = (FloatingActionButton) findViewById(R.id.add_homepage_weather_fab);
         mImageTool = new ImageTool(this);
     }
 

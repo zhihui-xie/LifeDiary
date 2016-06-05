@@ -1,9 +1,7 @@
 package com.id12533030.lifediary.view;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,8 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.adapter.MyFragmentPagerAdapter;
@@ -24,7 +20,6 @@ import com.id12533030.lifediary.model.Homepage;
 import com.id12533030.lifediary.model.HomepageManager;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
+//        Homepage homepage = new Homepage();
+//        homepage.save();
 
         Homepage m = new Homepage(Constants.PIC_URLS[0] + "beach.jpg", "Homepage", 1000, "Sunny", "Homepage", "Sydney" );
         m.save();
@@ -56,13 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
         fab.setOnClickListener(this);
 
-
-
     }
-
-
-
-
 
 
     @Override
