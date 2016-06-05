@@ -34,7 +34,7 @@
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_name_label"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"/>
+                android:textColor="@color/text_normal"/>
 
             <EditText
                 android:id="@+id/setting_main_name_edittext"
@@ -61,7 +61,7 @@
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_gender_label"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"/>
+                android:textColor="@color/text_normal"/>
 
             <EditText
                 android:id="@+id/setting_main_gender_edittext"
@@ -88,7 +88,7 @@
                 android:layout_weight="1.2"
                 android:text="@string/setting_main_age_label"
                 android:textSize="20sp"
-                android:textColor="@color/text_color"/>
+                android:textColor="@color/text_normal"/>
 
             <EditText
                 android:id="@+id/setting_main_age_edittext"
@@ -112,7 +112,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/setting_main_description_label"
             android:textSize="20sp"
-            android:textColor="@color/text_color"/>
+            android:textColor="@color/text_normal"/>
 
 
         <EditText
@@ -121,7 +121,8 @@
             android:layout_height="80dp"
             android:layout_margin="15dp"
             android:gravity="left|top"
-            android:hint="@string/setting_main_description" />
+            android:hint="@string/setting_main_description"
+            />
 
         <Button
             android:id="@+id/setting_main_ok_button"

@@ -36,10 +36,14 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private EditText mWeather;
     private ImageTool mImageTool;
     private EditText mText;
+    private FloatingActionButton mFab;
+    private FloatingActionButton mFabLoc;
+    FloatingActionButton mFabWea;
     long mMomentDate;
     Homepage mHomepage;
     private static Bitmap mBitmap;
     private static int mPicNum = 0;
+    private static String mStrLoc = "";
 
 
     @Override
@@ -49,20 +53,31 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
         mMainMenu = new MainMenu(this);
         mMainMenu.initToolbar(true);
         init();
+        setListener();
         loadInfo();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_homepage_add_fab);
-        fab.setOnClickListener(this);
+    }
+
+    private void setListener() {
+        mFab.setOnClickListener(this);
+        mFabLoc.setOnClickListener(this);
+        mFabWea.setOnClickListener(this);
         mImageView.setOnClickListener(this);
-        mImageTool = new ImageTool(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.add_homepage_add_fab:
                 storeInfo();
                 Snackbar.make(v, Constants.ADD_SUCCESSFULLY, Snackbar.LENGTH_LONG).show();
                 finish();
+                break;
+            case R.id.add_homepage_location_fab:
+                intent = new Intent(AddHomePage.this, MapsActivity.class);
+                startActivityForResult(intent, Constants.REQUEST_MAP);
+                break;
+            case R.id.add_homepage_weather_fab:
                 break;
             case R.id.add_homepage_photo_imageview:
                 mImageTool.gallery();
@@ -80,6 +95,10 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
         mContent = (EditText) findViewById(R.id.add_homepage_text_edittext);
         mWeather = (EditText) findViewById(R.id.add_homepage_weather_edittext);
         mText = (EditText) findViewById(R.id.add_homepage_text_edittext);
+        mFab = (FloatingActionButton) findViewById(R.id.add_homepage_add_fab);
+        mFabLoc = (FloatingActionButton) findViewById(R.id.add_homepage_location_fab);
+        mFabWea = (FloatingActionButton) findViewById(R.id.add_homepage_weather_fab);
+        mImageTool = new ImageTool(this);
     }
 
     private void loadInfo() {
@@ -90,9 +109,9 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private void storeInfo() {
         mHomepage = new Homepage();
         String pictureName = String.valueOf(mPicNum);
-        String photoUrl = Constants.PIC_URLS[0] +  pictureName + Constants.PIC_FOMATE;
-        if (mBitmap != null){
-            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0],  pictureName);
+        String photoUrl = Constants.PIC_URLS[0] + pictureName + Constants.PIC_FOMATE;
+        if (mBitmap != null) {
+            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0], pictureName);
         }
         mHomepage.setPhotoUrl(photoUrl);
         mHomepage.setTitle(mTitle.getText().toString());
@@ -104,22 +123,27 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (requestCode){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
             case Constants.PHOTO_REQUEST_GALLERY:
-                if(data != null){
+                if (data != null) {
                     try {
                         ContentResolver resolver = getContentResolver();
                         Uri uri = data.getData();
                         mBitmap = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(resolver, uri), 500, 500, true);
-                        if (mBitmap != null){
+                        if (mBitmap != null) {
                             mImageView.setImageBitmap(mBitmap);
                         }
-                    } catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 break;
+            case Constants.REQUEST_MAP:
+                if (data != null) {
+                    mStrLoc = data.getStringExtra(Constants.REQUEST_MAP_RESULT).toString();
+                    mLocation.setText(mStrLoc);
+                }
             default:
                 break;
         }
