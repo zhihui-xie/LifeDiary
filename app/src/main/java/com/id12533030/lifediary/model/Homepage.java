@@ -19,9 +19,6 @@ public class Homepage extends SugarRecord implements Serializable{
     private long mDate;
     @Column(name = "weather")
     private String mWeather;
-
-
-
     @Column(name = "text")
     private String mText;
     @Column(name = "location")

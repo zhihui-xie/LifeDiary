@@ -40,15 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
-//        Homepage homepage = new Homepage();
-//        homepage.save();
-
-        Homepage m = new Homepage(Constants.PIC_URLS[0] + "beach.jpg", "Homepage", 1000, "Sunny", "Homepage", "Sydney" );
-        m.save();
-        Homepage mm = new Homepage(Constants.PIC_URLS[0] + "view.jpg","Second Page",  2000, "Rain","Hahahaha", "Guangzhou");
-        mm.save();
-        Homepage mmm = new Homepage(Constants.PIC_URLS[0] + "sea.jpg", "Third Page",  3000, "Windy", "Third dayssss", "London" );
-        mmm.save();
+        if(Homepage.listAll(Homepage.class).size() == 0){
+            Homepage homepage = new Homepage("", "Welcome", System.currentTimeMillis(), "UTS", "Record your valuable moment", "Designed by Zhihui Xie");
+            homepage.save();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
         fab.setOnClickListener(this);
@@ -79,20 +74,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    public void addFragment(Fragment fragment, boolean addToBackStack, int containerId) {
-        invalidateOptionsMenu();
-        String backStackName = fragment.getClass().getName();
-        boolean fragmentPopped = mFragmentManager.popBackStackImmediate(backStackName, 0);
-        if (!fragmentPopped) {
-            FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.add(containerId, fragment, backStackName)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            if (addToBackStack)
-                transaction.addToBackStack(backStackName);
-            transaction.commit();
-        }
-
-    }
+//    public void addFragment(Fragment fragment, boolean addToBackStack, int containerId) {
+//        invalidateOptionsMenu();
+//        String backStackName = fragment.getClass().getName();
+//        boolean fragmentPopped = mFragmentManager.popBackStackImmediate(backStackName, 0);
+//        if (!fragmentPopped) {
+//            FragmentTransaction transaction = mFragmentManager.beginTransaction();
+//            transaction.add(containerId, fragment, backStackName)
+//                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//            if (addToBackStack)
+//                transaction.addToBackStack(backStackName);
+//            transaction.commit();
+//        }
+//    }
 
     private void createImageFolder() {
         for (int i = 0; i < 5; ++i) {

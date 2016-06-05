@@ -173,7 +173,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             if (mAddressRequested) {
                 mLatLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(mLatLng).title("Marker in Sydney"));
+                mMap.addMarker(new MarkerOptions().position(mLatLng).title("Your loacation"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(mLatLng));
                 startIntentService();
             }
