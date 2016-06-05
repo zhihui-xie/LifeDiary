@@ -2,7 +2,10 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/menu_item_background">
+    xmlns:Android="http://schemas.android.com/tools"
+    android:background="@color/menu_item_background"
+    Android:clipToPadding="true"
+    android:fitsSystemWindows="true">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -130,7 +133,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-
+            android:textColor="@color/toolPrimary"
+            android:textSize="18sp"
+            android:background="@color/colorPrimary"
             android:text="OK" />
     </LinearLayout>
     </ScrollView>

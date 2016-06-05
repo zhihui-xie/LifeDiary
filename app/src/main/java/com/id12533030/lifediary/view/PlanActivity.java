@@ -22,6 +22,7 @@ public class PlanActivity extends AppCompatActivity {
         setContentView(R.layout.plan_main);
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+        mMainMenu.initSystemBar(this);
     }
 
     @Override

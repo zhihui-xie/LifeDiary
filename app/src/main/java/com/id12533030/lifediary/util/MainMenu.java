@@ -1,7 +1,9 @@
 package com.id12533030.lifediary.util;
 
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.id12533030.lifediary.R;
@@ -18,6 +22,7 @@ import com.id12533030.lifediary.view.DiaryActivity;
 import com.id12533030.lifediary.view.MainActivity;
 import com.id12533030.lifediary.view.PlanActivity;
 import com.id12533030.lifediary.view.SettingActivity;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
@@ -58,7 +63,7 @@ public class MainMenu implements OnMenuItemClickListener {
         if (checkBack) {
             mAppCompatActivity.getSupportActionBar().setHomeButtonEnabled(true);
             mAppCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            mToolbar.setNavigationIcon(R.drawable.btn_back);
+            mToolbar.setNavigationIcon(R.drawable.ic_back);
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -118,6 +123,33 @@ public class MainMenu implements OnMenuItemClickListener {
         }
     }
 
+    /**
+     * Set the system status bar
+     * @param activity
+     */
+    public static void initSystemBar(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(activity, true);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+        tintManager.setStatusBarTintEnabled(true);
+
+        tintManager.setStatusBarTintResource(R.color.colorPrimary);
+
+    }
+
+
+    private static void setTranslucentStatus(Activity activity, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
 
     public void onCreateOptionsMenu(final Menu menu) {
         MenuInflater inflater = mAppCompatActivity.getMenuInflater();

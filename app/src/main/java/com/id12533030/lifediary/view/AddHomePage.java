@@ -52,6 +52,7 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.add_homepage);
         mMainMenu = new MainMenu(this);
         mMainMenu.initToolbar(true);
+        mMainMenu.initSystemBar(this);
         init();
         setListener();
         loadInfo();

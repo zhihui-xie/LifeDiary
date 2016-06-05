@@ -77,6 +77,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         mMainMenu = new MainMenu(this);
         mMainMenu.initToolbar(true);
+        mMainMenu.initSystemBar(this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -251,10 +252,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 result.putExtra(Constants.REQUEST_MAP_RESULT, mAddressOutput);
                 setResult(Activity.RESULT_OK, result);
             }
-
         }
-
-
     }
 
     /**

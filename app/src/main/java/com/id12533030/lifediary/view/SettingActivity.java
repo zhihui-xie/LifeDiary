@@ -46,13 +46,15 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.setting_main);
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
-        init();
-        loadInfo();
-        mButton.setOnClickListener(this);
-        mImageView.setOnClickListener(this);
+        mMainMenu.initSystemBar(this);
         mImageTool = new ImageTool(this);
+        init();
+        setListener();
+        loadInfo();
+
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
@@ -73,6 +75,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mAge = (EditText) findViewById(R.id.setting_main_age_edittext);
         mDescription = (EditText) findViewById(R.id.setting_main_description_edittext);
         mButton = (Button) findViewById(R.id.setting_main_ok_button);
+    }
+
+    private void setListener(){
+        mButton.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
     }
 
     @Override
