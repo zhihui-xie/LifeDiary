@@ -2,22 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/wrapper">
+    xmlns:Android="http://schemas.android.com/tools"
+    android:id="@+id/wrapper"
+    >
 
     <FrameLayout
         android:id="@+id/toolbar_list"
-        android:background="@color/orange"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_toolbar">
+        android:layout_height="@dimen/height_toolbar"
+        android:fitsSystemWindows="true"
+        Android:clipToPadding="true">
 
         <TextView
-            android:text="@string/title_following"
-            android:textColor="@color/black"
+            android:text="@string/title_day"
+            android:textColor="@color/toolPrimary"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-bold"
             android:textSize="@dimen/text_size_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/activity_euclid_toolbar_day_back"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="top"
+            android:clickable="true"
+            android:src="@drawable/ic_arrow_left"
+            />
 
     </FrameLayout>
 
@@ -32,32 +46,34 @@
 
     <RelativeLayout
         android:id="@+id/toolbar_profile"
-        android:background="@color/gray"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_toolbar"
         android:clickable="true"
+
         android:visibility="invisible">
 
         <ImageView
             android:id="@+id/toolbar_profile_back"
             android:layout_width="@dimen/height_toolbar"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/height_toolbar"
             android:layout_centerVertical="true"
-            android:layout_gravity="center"
+            android:layout_alignParentLeft="true"
             android:padding="15dp"
             android:src="@drawable/ic_arrow_left" />
 
         <RelativeLayout
+            android:id="@+id/activity_euclid_detail_relativelayout"
             android:layout_width="200dp"
             android:layout_height="33dp"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:background="@drawable/bg_black_oval">
 
             <TextView
-                android:text="@string/toolbar_bio"
+                android:text="@string/title_day"
                 android:textColor="@color/black"
-                android:layout_margin="2dp"
                 android:background="@drawable/bg_orange_oval"
                 style="@style/TextViewProfileToolbarTitle" />
 

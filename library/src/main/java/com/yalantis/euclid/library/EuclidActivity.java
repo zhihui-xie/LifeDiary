@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.RectF;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
@@ -96,6 +97,13 @@ public abstract class EuclidActivity extends Activity {
             @Override
             public void onClick(View v) {
                 animateCloseProfileDetails();
+            }
+        });
+
+        findViewById(R.id.activity_euclid_toolbar_day_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

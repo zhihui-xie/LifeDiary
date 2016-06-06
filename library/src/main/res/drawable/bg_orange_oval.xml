@@ -8,6 +8,6 @@
         android:bottomLeftRadius="@dimen/corner_radius_oval"
         android:bottomRightRadius="@dimen/corner_radius_oval" />
 
-    <solid android:color="@color/orange" />
+    <solid android:color="@color/toolPrimary" />
 
 </shape>

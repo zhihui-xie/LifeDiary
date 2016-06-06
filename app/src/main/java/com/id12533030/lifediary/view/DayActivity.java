@@ -35,14 +35,14 @@ public class DayActivity extends EuclidActivity {
 //        setContentView(R.layout.day_main);
 //        mFragmentManager = getSupportFragmentManager();
 //        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
-//        mMainMenu.initSystemBar(this);
+        mMainMenu.initSystemBar(this);
 //
         Day day = new Day("", "Day", Calendar.getInstance().getTimeInMillis(), "Important day");
         day.save();
         mButtonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DayActivity.this, "Oh hi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DayActivity.this, "Don't forget it!", Toast.LENGTH_SHORT).show();
             }
         });
     }
