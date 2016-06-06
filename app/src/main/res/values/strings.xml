@@ -27,5 +27,10 @@
     <string name="no_geocoder_available">No geocoder available</string>
     <string name="nothing_receive">Nothing received</string>
     <string name="no_location_data_provided">No location data provided</string>
+    <string name="plan_title">Plan</string>
+    <string name="plan_time">06.06.2016</string>
+    <string name="plan_location">UTS Buildting 11</string>
+    <string name="plan_divider">|</string>
+    <string name="plan_detail">Details</string>
 
 </resources>
