@@ -1,36 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:Android="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:background="@color/menu_item_background"
-    Android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    Android:clipToPadding="true">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
-    <include layout="@layout/toolbar" />
+        <include layout="@layout/toolbar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:id="@+id/diary_main_year_textview"
+                android:textSize="25sp"
+                android:textColor="@color/toolPrimary"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:id="@+id/diary_main_month_textview"
+                android:textSize="25sp"
+                android:textColor="@color/toolPrimary"/>
+        </LinearLayout>
 
-    <com.squareup.timessquare.CalendarPickerView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/compactcalendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:compactCalendarBackgroundColor="@color/colorPrimary"
+            app:compactCalendarCurrentDayBackgroundColor="#FBC02D"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#F44336"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTextColor="#fff"
+            app:compactCalendarTextSize="12sp"
+
+            />
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fragment_main_add_fab"
+        android:id="@+id/diary_main_add_floatingactionbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin_down"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@drawable/ic_add"
-        android:layout_marginBottom="@dimen/fab_margin_down"
-        app:backgroundTint ="@color/float_action_button_add_diary"/>
+        app:backgroundTint="@color/float_action_button_add_diary" />
 
 </android.support.design.widget.CoordinatorLayout>

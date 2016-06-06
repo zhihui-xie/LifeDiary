@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.id12533030.lifediary.model.Plan;
 import com.id12533030.lifediary.util.MainMenu;
 import com.id12533030.lifediary.R;
+
+import java.util.Calendar;
 
 /**
  * Created by LENOVO on 2016/5/31.
@@ -23,6 +26,9 @@ public class PlanActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mMainMenu.initSystemBar(this);
+
+        Plan plan = new Plan("", "Day", Calendar.getInstance().getTimeInMillis(),"Sydney", "Important day");
+        plan.save();
     }
 
     @Override

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.id12533030.lifediary.R;
-import com.id12533030.lifediary.model.Homepage;
+import com.id12533030.lifediary.model.Diary;
 import com.id12533030.lifediary.util.DateProcess;
 import com.id12533030.lifediary.util.ImageTool;
 
@@ -21,22 +21,20 @@ import java.io.IOException;
  */
 public class MainFragment extends Fragment {
 
-    private Homepage mHomepage;
+    private Diary mDiary;
     private static final String PAGE_KEY = "PAGE";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
-    public static MainFragment newInstance(Homepage homepage) {
+    public static MainFragment newInstance(Diary diary) {
         MainFragment fragment = new MainFragment();
 
-        // Supply homepage input as an argument.
+        // Supply diary input as an argument.
         Bundle args = new Bundle();
-        args.putSerializable(PAGE_KEY, homepage);
+        args.putSerializable(PAGE_KEY, diary);
         fragment.setArguments(args);
-
-
         return fragment;
     }
 
@@ -46,7 +44,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mHomepage = getArguments() != null ? (Homepage) getArguments().getSerializable(PAGE_KEY) : Homepage.findById(Homepage.class, 1);
+        mDiary = getArguments() != null ? (Diary) getArguments().getSerializable(PAGE_KEY) : Diary.findById(Diary.class, 1);
     }
 
     @Override
@@ -59,16 +57,16 @@ public class MainFragment extends Fragment {
         TextView weather = (TextView) this.getView().findViewById(R.id.fragment_main_temperature_textview);
         TextView text = (TextView) this.getView().findViewById(R.id.fragment_main_text_textview);
         try {
-            ImageTool.showImage(mHomepage.getmPhotoUrl(), imageView, 500, 500);
+            ImageTool.showImage(mDiary.getmPhotoUrl(), imageView, 500, 500);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        title.setText(mHomepage.getTitle());
-        location.setText(mHomepage.getLocation());
-        weather.setText(mHomepage.getWeather());
-        date.setText(String.valueOf(DateProcess.getDatetimeAsString(mHomepage.getDate())));
-        text.setText(mHomepage.getText());
+        title.setText(mDiary.getTitle());
+        location.setText(mDiary.getLocation());
+        weather.setText(mDiary.getWeather());
+        date.setText(String.valueOf(DateProcess.getDatetimeAsString(mDiary.getDate())));
+        text.setText(mDiary.getText());
     }
 
 

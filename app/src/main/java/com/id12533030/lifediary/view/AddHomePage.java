@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.id12533030.lifediary.R;
-import com.id12533030.lifediary.model.Homepage;
+import com.id12533030.lifediary.model.Diary;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.DateProcess;
 import com.id12533030.lifediary.util.ImageTool;
@@ -38,10 +38,9 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private EditText mText;
     private FloatingActionButton mFab;
     private FloatingActionButton mFabLoc;
-    long mMomentDate;
-    Homepage mHomepage;
+    private long mMomentDate;
+    private Diary mDiary;
     private static Bitmap mBitmap;
-    private static int mPicNum = 0;
     private static String mStrLoc = "";
 
 
@@ -103,19 +102,19 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     }
 
     private void storeInfo() {
-        mHomepage = new Homepage();
-        String pictureName = String.valueOf(mPicNum);
+        mDiary = new Diary();
+        String pictureName = String.valueOf(mMomentDate);
         String photoUrl = Constants.PIC_URLS[0] + pictureName + Constants.PIC_FOMATE;
         if (mBitmap != null) {
             mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0], pictureName);
         }
-        mHomepage.setPhotoUrl(photoUrl);
-        mHomepage.setTitle(mTitle.getText().toString());
-        mHomepage.setDate(mMomentDate);
-        mHomepage.setLocation(mLocation.getText().toString());
-        mHomepage.setWeather(mWeather.getText().toString());
-        mHomepage.setText(mText.getText().toString());
-        mHomepage.save();
+        mDiary.setPhotoUrl(photoUrl);
+        mDiary.setTitle(mTitle.getText().toString());
+        mDiary.setDate(mMomentDate);
+        mDiary.setLocation(mLocation.getText().toString());
+        mDiary.setWeather(mWeather.getText().toString());
+        mDiary.setText(mText.getText().toString());
+        mDiary.save();
     }
 
     @Override
