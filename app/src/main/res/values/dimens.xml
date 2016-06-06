@@ -13,4 +13,10 @@
     <dimen name="fragment_main_image_width">350dp</dimen>
     <dimen name="fragment_main_image_height">300dp</dimen>
     <dimen name="fragment_main_image_margin">20dp</dimen>
+
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="thumb_size">80dp</dimen>
+    <dimen name="half_margin">8dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="bottom_tab_height">64dp</dimen>
 </resources>

@@ -1,23 +1,17 @@
 package com.id12533030.lifediary.view;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.adapter.MyFragmentPagerAdapter;
-import com.id12533030.lifediary.model.Homepage;
-import com.id12533030.lifediary.model.HomepageManager;
+import com.id12533030.lifediary.model.Diary;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
 
@@ -26,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
     private ViewPager mViewPager = null;
@@ -40,13 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
-        if(Homepage.listAll(Homepage.class).size() == 0){
-            Homepage homepage = new Homepage("", "Welcome", System.currentTimeMillis(), "UTS", "Record your valuable moment", "Designed by Zhihui Xie");
-            homepage.save();
+        if (Diary.listAll(Diary.class).size() == 0) {
+            Diary diary = new Diary("", "Welcome", System.currentTimeMillis(), "UTS", "Record your valuable moment", "Designed by Zhihui Xie");
+            diary.save();
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fragment_main_add_fab);
-        fab.setOnClickListener(this);
 
     }
 
@@ -54,11 +46,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
-        HomepageManager homepageManager = new HomepageManager();
-        ArrayList<Homepage> homepages = homepageManager.getHomepages();
-        Collections.reverse(homepages);
+        ArrayList<Diary> diaries = (ArrayList<Diary>) Diary.listAll(Diary.class);
+        Collections.reverse(diaries);
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
-        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, homepages);
+        mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, diaries);
         mViewPager.setAdapter(mPagerAdapter);
     }
 
@@ -98,16 +89,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.fragment_main_add_fab:
-                intent = new Intent(MainActivity.this, AddHomePage.class);
-                startActivityForResult(intent, Constants.REQUEST_ADD_HOMEPAGE);
-                break;
-            default:
-                break;
-        }
-    }
 }

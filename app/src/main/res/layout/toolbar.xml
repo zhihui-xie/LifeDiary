@@ -17,4 +17,5 @@
         android:textSize="@dimen/tool_bar_text_size"
         android:gravity="center" />
 
+
 </android.support.v7.widget.Toolbar>

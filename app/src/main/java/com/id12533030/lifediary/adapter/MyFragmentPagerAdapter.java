@@ -6,39 +6,34 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
-import com.id12533030.lifediary.model.Homepage;
-import com.id12533030.lifediary.model.HomepageManager;
+import com.id12533030.lifediary.model.Diary;
 import com.id12533030.lifediary.view.MainFragment;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 /**
  * Created by LENOVO on 2016/6/1.
  */
 public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    HomepageManager mHomepageManager;
-    ArrayList<Homepage> mHomepageList;
+    ArrayList<Diary> mDiaryList;
 
-    public MyFragmentPagerAdapter(FragmentManager fragmentManager, ArrayList<Homepage> homepageList) {
+    public MyFragmentPagerAdapter(FragmentManager fragmentManager, ArrayList<Diary> diaryList) {
         super(fragmentManager);
-
-        mHomepageList = homepageList;
-
+        mDiaryList = diaryList;
     }
 
 
     @Override
     public Fragment getItem(int position) {
         Log.i("position", position + "");
-        Log.i("title", mHomepageList.get(position).getTitle());
-        return MainFragment.newInstance( mHomepageList.get(position));
+        Log.i("title", mDiaryList.get(position).getTitle());
+        return MainFragment.newInstance( mDiaryList.get(position));
     }
 
     @Override
     public int getCount() {
-        return mHomepageList.size();
+        return mDiaryList.size();
     }
 
 

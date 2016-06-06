@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Profile Interface</string>
+
+    <string name="lorem_ipsum_short">Your important day</string>
+    <string name="lorem_ipsum_long">Please describe the details of your important day. </string>
+
+    <string name="title_day">Day</string>
+
+    <string name="toolbar_details">Details</string>
+</resources>
