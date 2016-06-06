@@ -32,5 +32,6 @@
     <string name="plan_location">UTS Buildting 11</string>
     <string name="plan_divider">|</string>
     <string name="plan_detail">Details</string>
+    <string name="diary_title">Diary</string>
 
 </resources>

@@ -13,28 +13,30 @@ import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.adapter.PlanListAdapter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by LENOVO on 2016/6/6.
  */
-public class PlanListFragment extends BaseFragment {
-    @BindView(R.id.fragment_plan_list_recyclerView)RecyclerView recyclerView;
+public class PlanListFragment extends Fragment {
+    RecyclerView mRecyclerView;
 
-    @Override
-    int getLayoutId() {
-        return R.layout.fragment_plan_list;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_plan_list, container, false);
     }
 
     @Override
-    public void onViewCreated(View view,@Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init();
     }
 
 
     private void init() {
-        recyclerView.setAdapter(new PlanListAdapter(getContext()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.fragment_plan_list_recyclerView);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(new PlanListAdapter(getContext()));
+
     }
 }

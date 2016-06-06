@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,7 @@ import java.util.Locale;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.id12533030.lifediary.adapter.DiaryListAdapter;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
 import com.id12533030.lifediary.R;
@@ -37,6 +40,8 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     private TextView mYearTextView;
     private TextView mMonTextView;
     private static final String TAG = "DiaryActivity";
+    private RecyclerView mRecyclerView;
+    private DiaryListAdapter mDairayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,10 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         mMainMenu.initSystemBar(this);
         init();
         setListener();
+
+        mDairayAdapter = new DiaryListAdapter(this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mDairayAdapter);
     }
 
     @Override
@@ -62,6 +71,7 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         mCompactCalendarView.setUseThreeLetterAbbreviation(true);
         mYearTextView = (TextView) findViewById(R.id.diary_main_year_textview);
         mMonTextView = (TextView) findViewById(R.id.diary_main_month_textview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.diary_main_recyclerView);
     }
 
     private void setListener() {

@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -19,8 +18,6 @@ import com.id12533030.lifediary.R;
 
 import java.util.Calendar;
 
-import butterknife.BindView;
-
 import butterknife.ButterKnife;
 import eightbitlab.com.blurview.BlurView;
 import eightbitlab.com.blurview.RenderScriptBlur;
@@ -32,9 +29,9 @@ public class PlanActivity extends AppCompatActivity {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
 
-    ViewPager viewPager;
-    TabLayout tabLayout;
-    BlurView blurView;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
+    private BlurView mBlurView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +51,14 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     private void init() {
-        viewPager = (ViewPager) findViewById((R.id.viewPager));
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        blurView = (BlurView) findViewById(R.id.blurView);
+        mViewPager = (ViewPager) findViewById((R.id.viewPager));
+        mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        mBlurView = (BlurView) findViewById(R.id.blurView);
     }
 
     private void setupViewPager() {
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
-        tabLayout.setupWithViewPager(viewPager);
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void setupBlurView() {
@@ -73,7 +70,7 @@ public class PlanActivity extends AppCompatActivity {
         //set background, if your root layout doesn't have one
         final Drawable windowBackground = decorView.getBackground();
 
-        blurView.setupWith(rootView)
+        mBlurView.setupWith(rootView)
                 .windowBackground(windowBackground)
                 .blurAlgorithm(new RenderScriptBlur(this, true)) //Preferable algorithm, needs RenderScript support mode enabled
                 .blurRadius(radius);

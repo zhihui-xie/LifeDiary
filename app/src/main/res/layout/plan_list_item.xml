@@ -17,7 +17,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/thumb"
+            android:id="@+id/plan_list_item_photo_imageview"
             android:layout_width="@dimen/thumb_size"
             android:layout_height="@dimen/thumb_size"
             android:background="@color/colorTransparentBlack"
