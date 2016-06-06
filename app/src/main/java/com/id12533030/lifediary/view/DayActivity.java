@@ -27,14 +27,11 @@ import com.yalantis.euclid.library.EuclidListAdapter;
  */
 public class DayActivity extends EuclidActivity {
     private MainMenu mMainMenu;
-    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.day_main);
-//        mFragmentManager = getSupportFragmentManager();
-//        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+
         mMainMenu.initSystemBar(this);
 //
         Day day = new Day("", "Day", Calendar.getInstance().getTimeInMillis(), "Important day");

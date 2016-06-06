@@ -36,7 +36,7 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
     private CompactCalendarView mCompactCalendarView;
-    private FloatingActionButton mAddFab;
+
     private TextView mYearTextView;
     private TextView mMonTextView;
     private static final String TAG = "DiaryActivity";
@@ -66,7 +66,7 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
     }
     private void init() {
-        mAddFab = (FloatingActionButton) findViewById(R.id.diary_main_add_floatingactionbutton);
+
         mCompactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         mCompactCalendarView.setUseThreeLetterAbbreviation(true);
         mYearTextView = (TextView) findViewById(R.id.diary_main_year_textview);
@@ -75,7 +75,7 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void setListener() {
-        mAddFab.setOnClickListener(this);
+
         mCompactCalendarView.setListener(this);
     }
 
@@ -95,10 +95,7 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
-            case R.id.diary_main_add_floatingactionbutton:
-                intent = new Intent(DiaryActivity.this, AddHomePage.class);
-                startActivityForResult(intent, Constants.REQUEST_ADD_HOMEPAGE);
-                break;
+
             default:
                 break;
         }

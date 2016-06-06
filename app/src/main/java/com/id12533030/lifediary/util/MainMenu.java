@@ -21,6 +21,7 @@ import com.id12533030.lifediary.view.DayActivity;
 import com.id12533030.lifediary.view.DiaryActivity;
 import com.id12533030.lifediary.view.MainActivity;
 import com.id12533030.lifediary.view.PlanActivity;
+import com.id12533030.lifediary.view.RecordActivity;
 import com.id12533030.lifediary.view.SettingActivity;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
@@ -105,12 +106,15 @@ public class MainMenu implements OnMenuItemClickListener {
         plan.setResource(R.drawable.ic_plan);
         MenuObject setting = new MenuObject(Constants.SETTING_MENU);
         setting.setResource(R.drawable.ic_setting);
+        MenuObject record = new MenuObject(Constants.RECORD_MENU);
+        record.setResource(R.drawable.ic_record);
         menuObjects.add(close);
         menuObjects.add(homePage);
         menuObjects.add(diary);
         menuObjects.add(day);
         menuObjects.add(plan);
         menuObjects.add(setting);
+        menuObjects.add(record);
         return menuObjects;
     }
 
@@ -192,6 +196,10 @@ public class MainMenu implements OnMenuItemClickListener {
             case 5:
                 myIntent = new Intent(mAppCompatActivity, SettingActivity.class);
                 mMenuDialogFragment.startActivityForResult(myIntent, Constants.REQUEST_SETTING);
+                break;
+            case 6:
+                myIntent = new Intent(mAppCompatActivity, RecordActivity.class);
+                mMenuDialogFragment.startActivityForResult(myIntent, Constants.REQUEST_RECORD);
                 break;
             default:
                 break;

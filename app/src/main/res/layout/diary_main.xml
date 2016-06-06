@@ -65,14 +65,6 @@
     </LinearLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/diary_main_add_floatingactionbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/fab_margin_down"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/float_action_button_add_diary" />
+
 
 </android.support.design.widget.CoordinatorLayout>

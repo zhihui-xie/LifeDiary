@@ -46,6 +46,11 @@
             android:label="@string/add_homepage_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.RecordActivity"
+            android:label="@string/record_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="DATABASE"

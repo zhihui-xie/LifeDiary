@@ -8,6 +8,7 @@
     <string name="diary_name">Diary</string>
     <string name="day_name">Day</string>
     <string name="plan_name">Plan</string>
+    <string name="record_name">Record</string>
     <string name="setting_name">Setting</string>
     <string name="setting_main_name">Your name</string>
     <string name="setting_main_name_label">Name</string>
@@ -33,5 +34,6 @@
     <string name="plan_divider">|</string>
     <string name="plan_detail">Details</string>
     <string name="diary_title">Diary</string>
+    <string name="record_title">Record Your Life</string>
 
 </resources>
