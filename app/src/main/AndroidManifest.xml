@@ -51,6 +51,11 @@
             android:label="@string/record_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.DiaryDetail"
+            android:label="@string/diary_detail_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="DATABASE"

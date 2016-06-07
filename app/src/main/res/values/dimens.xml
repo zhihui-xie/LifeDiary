@@ -9,7 +9,7 @@
     <dimen name="main_screen_side_padding">10dp</dimen>
     <dimen name="tool_bar_text_size">20sp</dimen>
     <dimen name="tool_bar_height">56dp</dimen>
-    <dimen name="fab_margin_down">10dp</dimen>
+    <dimen name="fab_margin_down">15dp</dimen>
     <dimen name="fragment_main_image_width">350dp</dimen>
     <dimen name="fragment_main_image_height">300dp</dimen>
     <dimen name="fragment_main_image_margin">20dp</dimen>

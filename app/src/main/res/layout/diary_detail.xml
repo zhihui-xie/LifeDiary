@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    Android:clipToPadding="true">
+
+    <ScrollView
+        android:id="@+id/diary_detail_text_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar" />
+
+            <ImageView
+                android:id="@+id/diary_detail_photo_imageview"
+                android:layout_width="@dimen/fragment_main_image_width"
+                android:layout_height="@dimen/fragment_main_image_height"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/fragment_main_image_margin"
+                android:scaleType="fitXY"
+                android:src="@mipmap/photo_default" />
+
+            <TextView
+                android:id="@+id/diary_detail_title_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/diary_detail_photo_imageview"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@string/title"
+                android:textColor="@color/text_normal"
+                android:gravity="center"
+                android:textSize="@dimen/title_text_size" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+                <TextView
+                    android:id="@+id/diary_detail_date_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_marginRight="10dp"
+                    android:text="June 1st, 2016"
+                    android:layout_marginEnd="15dp"/>
+
+                <TextView
+                    android:id="@+id/diary_detail_temperature_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_marginRight="10dp"
+                    android:text="Sunny"
+                    android:textSize="@dimen/menu_text_size" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/diary_detail_text_textview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/text"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/menu_text_size"
+
+                />
+
+
+            <TextView
+                android:id="@+id/diary_detail_location_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Sydney" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

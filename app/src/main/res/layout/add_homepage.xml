@@ -106,11 +106,10 @@
 
                     android:layout_marginBottom="@dimen/fab_margin_down"
                     android:layout_marginLeft="@dimen/fab_margin"
-
-                    android:src="@drawable/ic_ok"
+                    android:src="@drawable/ic_locate"
                     android:layout_below="@+id/add_homepage_location_edittext"
                     android:layout_alignParentBottom="true"
-                    app:backgroundTint = "@color/float_action_button_location"
+                    app:backgroundTint = "@color/menu_item_background"
 
                     />
 
@@ -124,6 +123,7 @@
                     android:src="@drawable/ic_ok"
                     android:layout_below="@+id/add_homepage_location_edittext"
                     android:layout_alignParentBottom="true"
+                    app:backgroundTint = "@color/float_action_button_add_diary"
                     />
             </RelativeLayout>
         </ScrollView>

@@ -1,9 +1,7 @@
 package com.id12533030.lifediary.view;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,26 +11,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.id12533030.lifediary.adapter.DiaryListAdapter;
+import com.id12533030.lifediary.model.Diary;
 import com.id12533030.lifediary.util.Constants;
+import com.id12533030.lifediary.util.DateProcess;
 import com.id12533030.lifediary.util.MainMenu;
 import com.id12533030.lifediary.R;
-import com.squareup.timessquare.CalendarPickerView;
 
 /**
  * Created by LENOVO on 2016/5/31.
  */
-public class DiaryActivity extends AppCompatActivity implements View.OnClickListener, CompactCalendarView.CompactCalendarViewListener {
+public class DiaryActivity extends AppCompatActivity implements CompactCalendarView.CompactCalendarViewListener, DiaryListAdapter.MyItemClickListener {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
     private CompactCalendarView mCompactCalendarView;
@@ -41,7 +37,11 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     private TextView mMonTextView;
     private static final String TAG = "DiaryActivity";
     private RecyclerView mRecyclerView;
-    private DiaryListAdapter mDairayAdapter;
+    private DiaryListAdapter mDairyAdapter;
+    private Date mDate;
+    private ArrayList<Diary> mAllDiaryList;
+
+    private final static int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,10 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mMainMenu.initSystemBar(this);
+        mAllDiaryList = (ArrayList<Diary>) Diary.listAll(Diary.class);
         init();
+        setAdapter();
         setListener();
-
-        mDairayAdapter = new DiaryListAdapter(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mDairayAdapter);
     }
 
     @Override
@@ -64,9 +62,9 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         Calendar today = Calendar.getInstance();
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
+
     }
     private void init() {
-
         mCompactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         mCompactCalendarView.setUseThreeLetterAbbreviation(true);
         mYearTextView = (TextView) findViewById(R.id.diary_main_year_textview);
@@ -75,8 +73,14 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void setListener() {
-
         mCompactCalendarView.setListener(this);
+        mDairyAdapter.setOnItemClickListener(this);
+    }
+
+    private void setAdapter() {
+        mDairyAdapter = new DiaryListAdapter(this, mAllDiaryList);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mDairyAdapter);
     }
 
     @Override
@@ -91,29 +95,42 @@ public class DiaryActivity extends AppCompatActivity implements View.OnClickList
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-
-            default:
-                break;
-        }
-    }
 
     @Override
     public void onDayClick(Date dateClicked) {
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(dateClicked.getTime())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(dateClicked.getTime())));
-        Toast.makeText(getBaseContext(), "Day was clicked: " + dateClicked, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(), "Day was clicked: " + dateClicked, Toast.LENGTH_LONG).show();
+        mDate = dateClicked;
         Log.d(TAG, "Day was clicked: " + dateClicked);
+
+        showDiaryBasedOnDate(dateClicked);
     }
 
     @Override
     public void onMonthScroll(Date firstDayOfNewMonth) {
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(firstDayOfNewMonth.getTime())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(firstDayOfNewMonth.getTime())));
+        showDiaryBasedOnDate(firstDayOfNewMonth);
     }
 
+    private void showDiaryBasedOnDate(Date date){
+        ArrayList<Diary> selectedDiary = new ArrayList<>();
+        for (int i = 0; i < mAllDiaryList.size(); ++i){
+            Diary diary = mAllDiaryList.get(i);
+            if (DateProcess.getDateAsString(diary.getDate()).equals(new SimpleDateFormat("dd-MM-yyyy").format(date))){
+                selectedDiary.add(diary);
+            }
+        }
+        mRecyclerView.setAdapter(new DiaryListAdapter(this, selectedDiary));
+    }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        Diary diary =  mAllDiaryList.get(position);
+        Long id = diary.getId();
+        Intent intent = new Intent(DiaryActivity.this, DiaryDetail.class);
+        intent.putExtra(Constants.EXTRA_DIARY, id);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
 }

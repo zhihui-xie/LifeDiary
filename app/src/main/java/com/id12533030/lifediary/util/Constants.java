@@ -42,4 +42,7 @@ public class Constants {
     public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME +
             ".LOCATION_DATA_EXTRA";
 
+    public final static int LIST_ITEM_SIZE = 80;
+    public final static String EXTRA_DIARY = "com.id12533030.lifediary.view.DIARY";
+
 }

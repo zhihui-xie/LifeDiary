@@ -35,5 +35,8 @@
     <string name="plan_detail">Details</string>
     <string name="diary_title">Diary</string>
     <string name="record_title">Record Your Life</string>
+    <string name="diary_detail_name">Diary Detail</string>
+    <string name="diary_datetime">08.06.2016</string>
+    <string name="diary_detail">Your valueable memory.</string>
 
 </resources>

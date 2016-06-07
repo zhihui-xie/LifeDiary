@@ -40,22 +40,22 @@ public class MainMenu implements OnMenuItemClickListener {
     private FragmentManager mFragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     private static final String HELLO = "Hello ";
+    private boolean mIsMenuClickable;
 
-    public MainMenu(AppCompatActivity appCompatActivity) {
+    public MainMenu(AppCompatActivity appCompatActivity, boolean checkBack, boolean addMenu) {
         mAppCompatActivity = appCompatActivity;
-
+        initToolbar(checkBack);
+        initMenuFragment(addMenu);
     }
 
     public MainMenu(AppCompatActivity appCompatActivity, FragmentManager fm, boolean checkBack, boolean addMenu) {
         mAppCompatActivity = appCompatActivity;
         mFragmentManager = fm;
         initToolbar(checkBack);
-        if (addMenu) {
-            initMenuFragment();
-        }
+        initMenuFragment(addMenu);
     }
 
-    public void initToolbar(boolean checkBack) {
+    private void initToolbar(boolean checkBack) {
         Toolbar mToolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.toolbar);
         TextView mToolBarTextView = (TextView) mAppCompatActivity.findViewById(R.id.text_view_toolbar_title);
         mAppCompatActivity.setSupportActionBar(mToolbar);
@@ -72,18 +72,18 @@ public class MainMenu implements OnMenuItemClickListener {
                 }
             });
         }
-
-
     }
 
-    public void initMenuFragment() {
+    private void initMenuFragment(boolean isClickable) {
         MenuParams menuParams = new MenuParams();
         menuParams.setActionBarSize((int) mAppCompatActivity.getResources().getDimension(R.dimen.tool_bar_height));
         menuParams.setMenuObjects(getMenuObjects());
         menuParams.setClosableOutside(true);
         mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
-        mMenuDialogFragment.setItemClickListener(this);
-
+        mIsMenuClickable = isClickable;
+        if (isClickable) {
+            mMenuDialogFragment.setItemClickListener(this);
+        }
     }
 
     private static List<MenuObject> getMenuObjects() {
@@ -157,14 +157,18 @@ public class MainMenu implements OnMenuItemClickListener {
 
     public void onCreateOptionsMenu(final Menu menu) {
         MenuInflater inflater = mAppCompatActivity.getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        if(mIsMenuClickable){
+            inflater.inflate(R.menu.clickable_menu, menu);
+        } else {
+            inflater.inflate(R.menu.unclickable_menu, menu);
+        }
 
     }
 
 
     public void onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.context_menu:
+            case R.id.clickable_menu:
                 if (mFragmentManager.findFragmentByTag(ContextMenuDialogFragment.TAG) == null) {
                     mMenuDialogFragment.show(mFragmentManager, ContextMenuDialogFragment.TAG);
                 }
