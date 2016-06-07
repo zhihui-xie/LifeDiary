@@ -41,25 +41,23 @@ public class PlanActivity extends AppCompatActivity {
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         init();
-        testMethod();
 
-
+        if(Plan.listAll(Plan.class).size() == 0){
+            testMethod();
+        }
+        
         ButterKnife.bind(this);
         setupBlurView();
         setupViewPager();
     }
 
     private void testMethod(){
-        for (int i = 0; i < 20; ++i){
-            Plan plan = new Plan(0, "Urgent", "07.06.2016","Sydney", "Urgent plan", 0);
+        for (int i = 0; i < 10; ++i){
+            Plan plan = new Plan(0, "Urgent", "07.06.2016","Sydney", "Urgent plan");
             plan.save();
         }
-        for (int i = 0; i < 20; ++i){
-            Plan plan = new Plan(1, "Normal", "08.06.2016","Melbourne", "Normal plan", 0);
-            plan.save();
-        }
-        for (int i = 0; i < 20; ++i){
-            Plan plan = new Plan(1, "Completed", "07.06.2016","Brisbane", "Completed", 1);
+        for (int i = 0; i < 10; ++i){
+            Plan plan = new Plan(1, "Normal", "08.06.2016","Melbourne", "Normal plan");
             plan.save();
         }
     }

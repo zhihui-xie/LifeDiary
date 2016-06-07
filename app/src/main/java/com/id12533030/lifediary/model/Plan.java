@@ -19,19 +19,18 @@ public class Plan extends SugarRecord implements Serializable{
     private String mLocation;
     @Column(name = "text")
     private String mText;
-    @Column(name = "state")
-    private int mState;
+
 
     public Plan(){}
 
-    public Plan(int type, String title, String date, String location, String text, int state) {
+    public Plan(int type, String title, String date, String location, String text) {
         super();
         mType = type;
         mTitle = title;
         mDate = date;
         mText = text;
         mLocation = location;
-        mState = state;
+
     }
 
     public int getType() {
@@ -74,11 +73,4 @@ public class Plan extends SugarRecord implements Serializable{
         this.mText = mText;
     }
 
-    public int getState() {
-        return mState;
-    }
-
-    public void setState(int state) {
-        this.mState = state;
-    }
 }

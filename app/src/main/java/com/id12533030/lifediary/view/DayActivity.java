@@ -1,7 +1,9 @@
 package com.id12533030.lifediary.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,9 +35,8 @@ public class DayActivity extends EuclidActivity {
         super.onCreate(savedInstanceState);
 
         mMainMenu.initSystemBar(this);
-        testMethod();
-        Day day = new Day(1, "Day", "06.06.2016", "Important day");
-        day.save();
+
+
         mButtonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,19 +46,19 @@ public class DayActivity extends EuclidActivity {
     }
 
     private void testMethod(){
-        for (int i = 0; i < 5; ++i){
+        for (int i = 0; i < 2; ++i){
             Day day = new Day(0, "Birthday", "06.06.2016", "Important day");
             day.save();
         }
-        for (int i = 0; i < 5; ++i){
+        for (int i = 0; i < 2; ++i){
             Day day = new Day(1, "Anniversary", "05.06.2016", "Important day");
             day.save();
         }
-        for (int i = 0; i < 5; ++i){
+        for (int i = 0; i < 2; ++i){
             Day day = new Day(2, "Festival", "04.06.2016", "Important day");
             day.save();
         }
-        for (int i = 0; i < 5; ++i){
+        for (int i = 0; i < 2; ++i){
             Day day = new Day(3, "Others", "01.06.2016", "Important day");
             day.save();
         }
@@ -67,26 +68,36 @@ public class DayActivity extends EuclidActivity {
     protected BaseAdapter getAdapter() {
         Map<String, Object> profileMap;
         List<Map<String, Object>> profilesList = new ArrayList<>();
-
-        int[] avatars = {
-                R.drawable.birthday,
-                R.drawable.anniversary,
-                R.drawable.festival,
-                R.drawable.others,
-                };
-
-//        String[] names = getResources().getStringArray(R.array.array_names);
-        String[] names = {"Day One", "Day Two", "Day Three", "Day Four"};
-        for (int i = 0; i < avatars.length; i++) {
-            profileMap = new HashMap<>();
-            profileMap.put(EuclidListAdapter.KEY_AVATAR, avatars[i]);
-            profileMap.put(EuclidListAdapter.KEY_NAME, names[i]);
-            profileMap.put(EuclidListAdapter.KEY_DESCRIPTION_SHORT, getString(R.string.lorem_ipsum_short));
-            profileMap.put(EuclidListAdapter.KEY_DESCRIPTION_FULL, getString(R.string.lorem_ipsum_long));
-            profilesList.add(profileMap);
+        if(Day.listAll(Day.class).size() == 0){
+            testMethod();
         }
 
+        final ArrayList<Day> dayList = (ArrayList<Day>) Day.listAll(Day.class);
+        final int len = dayList.size();
+        for (int i = 0; i < len; ++i){
+            Day day = dayList.get(i);
+            profileMap = new HashMap<>();
+            profileMap.put(EuclidListAdapter.KEY_AVATAR, chooseImage(day.getType()));
+            profileMap.put(EuclidListAdapter.KEY_NAME, day.getTitle());
+            profileMap.put(EuclidListAdapter.KEY_DESCRIPTION_SHORT, day.getDate());
+            profileMap.put(EuclidListAdapter.KEY_DESCRIPTION_FULL, day.getText());
+            profilesList.add(profileMap);
+
+        }
         return new EuclidListAdapter(this, R.layout.list_item, profilesList);
+    }
+
+    private int chooseImage(int num){
+        switch (num){
+            case 0:
+                return R.drawable.birthday;
+            case 1:
+                return R.drawable.anniversary;
+            case 2:
+                return R.drawable.festival;
+            default:
+                return R.drawable.others;
+        }
     }
 
     @Override

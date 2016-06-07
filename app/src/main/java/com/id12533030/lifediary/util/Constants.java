@@ -46,5 +46,6 @@ public class Constants {
     public final static String EXTRA_DIARY = "com.id12533030.lifediary.view.DIARY";
     public final static String CONFIRM = "Confirm";
     public final static String CANCEL = "Cancel";
+    public final static String CREATE_SUCCESSFUL = "Create successfully";
 
 }
