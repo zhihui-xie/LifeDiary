@@ -24,6 +24,8 @@
     <color name="record_diary_background">#fff9c4</color>
     <color name="record_day_background">#c8e6c9</color>
     <color name="record_plan_background">#bbdefb</color>
+    <color name="calendar_selected_day_background">#F44336</color>
+    <color name="calendar_current_day">#FBC02D</color>
 
 
 </resources>

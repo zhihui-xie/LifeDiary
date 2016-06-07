@@ -1,144 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:Android="http://schemas.android.com/tools"
     android:background="@color/menu_item_background"
-    Android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    Android:clipToPadding="true">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/toolbar" />
-
-        <ImageView
-            android:id="@+id/setting_main_profile_imageview"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:src="@mipmap/photo_default"
-            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            <include layout="@layout/toolbar" />
+
+            <ImageView
+                android:id="@+id/setting_main_profile_imageview"
+                android:layout_width="@dimen/setting_imageview_size"
+                android:layout_height="@dimen/setting_imageview_size"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/setting_imageview_margin_top"
+                android:scaleType="fitXY"
+                android:src="@mipmap/photo_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_title_margin_left"
+                    android:layout_weight="1.2"
+                    android:text="@string/setting_main_name_label"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/title" />
+
+                <EditText
+                    android:id="@+id/setting_main_name_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_editview_margin_left"
+                    android:layout_marginRight="@dimen/setting_editview_margin_right"
+                    android:layout_weight="3"
+                    android:hint="@string/setting_main_name"
+                    android:singleLine="true"
+                    android:textSize="@dimen/title" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_title_margin_left"
+                    android:layout_weight="1.2"
+                    android:text="@string/setting_main_gender_label"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/title" />
+
+                <EditText
+                    android:id="@+id/setting_main_gender_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_editview_margin_left"
+                    android:layout_marginRight="@dimen/setting_editview_margin_right"
+                    android:layout_weight="3"
+                    android:hint="@string/setting_main_gender"
+                    android:singleLine="true"
+                    android:textSize="@dimen/title" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_title_margin_left"
+                    android:layout_weight="1.2"
+                    android:text="@string/setting_main_age_label"
+                    android:textColor="@color/text_normal"
+                    android:textSize="@dimen/title" />
+
+                <EditText
+                    android:id="@+id/setting_main_age_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/setting_editview_margin_left"
+                    android:layout_marginRight="@dimen/setting_editview_margin_right"
+                    android:layout_weight="3"
+
+                    android:hint="@string/setting_main_age"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textSize="@dimen/title" />
+            </LinearLayout>
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="1.2"
-                android:text="@string/setting_main_name_label"
-                android:textSize="20sp"
-                android:textColor="@color/text_normal"/>
+
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/tiny_margin"
+                android:text="@string/setting_main_description_label"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/title" />
+
 
             <EditText
-                android:id="@+id/setting_main_name_edittext"
-                android:layout_width="0dp"
+                android:id="@+id/setting_main_description_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/setting_main_description_edittext_height"
+                android:layout_margin="@dimen/setting_main_description_edittext_margin"
+                android:gravity="left|top"
+                android:hint="@string/setting_main_description" />
+
+            <Button
+                android:id="@+id/setting_main_ok_button"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-                android:hint="@string/setting_main_name"
-                android:singleLine="true"
-                android:textSize="20sp" />
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimary"
+                android:text="OK"
+                android:textColor="@color/toolPrimary"
+                android:textSize="18sp" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30sp"
-                android:layout_weight="1.2"
-                android:text="@string/setting_main_gender_label"
-                android:textSize="20sp"
-                android:textColor="@color/text_normal"/>
-
-            <EditText
-                android:id="@+id/setting_main_gender_edittext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-                android:hint="@string/setting_main_gender"
-                android:singleLine="true"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="1.2"
-                android:text="@string/setting_main_age_label"
-                android:textSize="20sp"
-                android:textColor="@color/text_normal"/>
-
-            <EditText
-                android:id="@+id/setting_main_age_edittext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_weight="3"
-
-                android:hint="@string/setting_main_age"
-                android:inputType="number"
-                android:singleLine="true"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/setting_main_description_label"
-            android:textSize="20sp"
-            android:textColor="@color/text_normal"/>
-
-
-        <EditText
-            android:id="@+id/setting_main_description_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="15dp"
-            android:gravity="left|top"
-            android:hint="@string/setting_main_description"
-            />
-
-        <Button
-            android:id="@+id/setting_main_ok_button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/toolPrimary"
-            android:textSize="18sp"
-            android:background="@color/colorPrimary"
-            android:text="OK" />
-    </LinearLayout>
     </ScrollView>
 
 

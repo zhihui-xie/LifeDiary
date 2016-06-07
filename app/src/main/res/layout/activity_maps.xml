@@ -4,12 +4,12 @@
     android:id="@+id/activity_maps"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    Android:clipToPadding="true"
-    android:fitsSystemWindows="true">
-
+    Android:clipToPadding="true">
 
     <include layout="@layout/toolbar" />
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -43,17 +43,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.6"
-        android:background="@color/colorPrimary"
-        >
+        android:background="@color/colorPrimary">
+
         <TextView
             android:id="@+id/activity_maps_location_textview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:text="@string/map_hint"
             android:textColor="@color/toolPrimary"
-            android:text="Please press the button to get your location"
-            android:textSize="15sp" />
-
+            android:textSize="@dimen/body" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -61,11 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:foregroundGravity="center"
-
-            android:visibility="gone"
-
-
-            />
+            android:visibility="gone" />
     </RelativeLayout>
 
 

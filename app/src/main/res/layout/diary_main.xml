@@ -16,55 +16,55 @@
 
 
         <include layout="@layout/toolbar" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/calendar_title_height"
             android:orientation="horizontal">
+
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:gravity="center"
                 android:id="@+id/diary_main_year_textview"
-                android:textSize="25sp"
-                android:textColor="@color/toolPrimary"
-                />
-            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
+                android:textColor="@color/toolPrimary"
+                android:textSize="@dimen/headline" />
+
+            <TextView
                 android:id="@+id/diary_main_month_textview"
-                android:textSize="25sp"
-                android:textColor="@color/toolPrimary"/>
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:textColor="@color/toolPrimary"
+                android:textSize="@dimen/headline" />
         </LinearLayout>
 
         <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/compactcalendar_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/calendar_height"
             app:compactCalendarBackgroundColor="@color/colorPrimary"
-            app:compactCalendarCurrentDayBackgroundColor="#FBC02D"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="#F44336"
-            app:compactCalendarMultiEventIndicatorColor="#fff"
-            app:compactCalendarTextColor="#fff"
-            app:compactCalendarTextSize="12sp"
+            app:compactCalendarCurrentDayBackgroundColor="@color/calendar_current_day"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/calendar_selected_day_background"
+            app:compactCalendarMultiEventIndicatorColor="@color/white"
+            app:compactCalendarTextColor="@color/white"
+            app:compactCalendarTextSize="@dimen/caption"
 
             />
+
         <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/diary_main_recyclerView"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            >
+            android:orientation="vertical">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
-
-
 
 
 </android.support.design.widget.CoordinatorLayout>

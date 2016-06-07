@@ -19,12 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragment_main_photo_imageview"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/tiny_margin"
         android:singleLine="true"
         android:text="@string/title"
         android:textColor="@color/text_normal"
 
-        android:textSize="@dimen/title_text_size" />
+        android:textSize="@dimen/headline" />
 
     <TextView
         android:id="@+id/fragment_main_date_textview"
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/fragment_main_title_textview"
-        android:layout_marginRight="10dp"
-        android:text="June 1st, 2016" />
+        android:layout_marginRight="@dimen/tiny_margin"
+        android:text="@string/diary_date_hint" />
 
     <TextView
         android:id="@+id/fragment_main_temperature_textview"
@@ -41,27 +41,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/fragment_main_date_textview"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/tiny_margin"
         android:text="Sunny"
-        android:textSize="@dimen/menu_text_size" />
+        android:textSize="@dimen/body" />
 
     <ScrollView
         android:id="@+id/fragment_main_text_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/small_scrollview_height"
         android:layout_below="@+id/fragment_main_temperature_textview"
-
         >
 
         <TextView
             android:id="@+id/fragment_main_text_textview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/tiny_margin"
+            android:layout_marginRight="@dimen/tiny_margin"
             android:text="@string/text"
             android:textColor="@color/text_normal"
-            android:textSize="@dimen/menu_text_size"
+            android:textSize="@dimen/body"
 
             />
     </ScrollView>

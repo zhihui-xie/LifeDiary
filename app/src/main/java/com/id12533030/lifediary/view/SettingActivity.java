@@ -192,5 +192,4 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 }

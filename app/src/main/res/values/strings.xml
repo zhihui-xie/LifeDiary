@@ -36,7 +36,7 @@
     <string name="diary_title">Diary</string>
     <string name="record_title">Record Your Life</string>
     <string name="diary_detail_name">Diary Detail</string>
-    <string name="diary_datetime">08.06.2016</string>
+    <string name="diary_datetime">Date</string>
     <string name="diary_detail">Your valuable memory.</string>
     <string name="add_plan_title">Plan Title :</string>
     <string name="add_plan_date">Plan Date :</string>
@@ -48,5 +48,9 @@
     <string name="urgent">Total Urgent Plans :</string>
     <string name="normal">Total Normal Plans :</string>
     <string name="plan_number">20</string>
+    <string name="map_hint">Please press the button to get your location</string>
+    <string name="diary_date_hint">Date</string>
+    <string name="diary_location_hint">Location</string>
+    <string name="diary_weather_hint">Weather</string>
 
 </resources>

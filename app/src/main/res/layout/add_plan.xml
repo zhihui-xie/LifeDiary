@@ -1,91 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_plan_dialog"
+    android:layout_width="@dimen/dialog_width"
     android:layout_height="wrap_content"
-    android:layout_width="350dp"
-    android:background="#ffffffff"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:id="@+id/add_plan_dialog">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/add_plan_title" />
-        <EditText android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/add_plan_title_textview"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/add_plan_date" />
-        <EditText android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/add_plan_date_textview"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/add_plan_location" />
-        <EditText android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/add_plan_location_textview"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/add_plan_detail" />
-        <EditText android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/add_plan_text_textview"
-            />
-    </LinearLayout>
+    android:padding="@dimen/tiny_padding">
 
-        <RadioGroup
-            android:id="@+id/add_plan_radiogroup"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:checkedButton="@+id/add_plan_urgent_radiobutton"
-            >
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Urgent"
-                android:layout_marginRight="50dp"
-                android:textSize="18sp"
-                android:id="@+id/add_plan_urgent_radiobutton"
-                />
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Normal"
-                android:textSize="18sp"
-                android:id="@+id/add_plan_normal_radiobutton"/>
-        </RadioGroup>
+            android:text="@string/add_plan_title"
+            android:textSize="@dimen/title" />
 
+        <EditText
+            android:id="@+id/add_plan_title_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_plan_date"
+            android:textSize="@dimen/title" />
+
+        <EditText
+            android:id="@+id/add_plan_date_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_plan_location"
+            android:textSize="@dimen/title" />
+
+        <EditText
+            android:id="@+id/add_plan_location_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_plan_detail"
+            android:textSize="@dimen/title" />
+
+        <EditText
+            android:id="@+id/add_plan_text_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/add_plan_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_top"
+        android:checkedButton="@+id/add_plan_urgent_radiobutton"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/add_plan_urgent_radiobutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/large_margin"
+            android:layout_weight="1"
+            android:text="Urgent"
+            android:textSize="@dimen/subheading" />
+
+        <RadioButton
+            android:id="@+id/add_plan_normal_radiobutton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Normal"
+            android:textSize="@dimen/subheading" />
+    </RadioGroup>
 
 
 </LinearLayout>

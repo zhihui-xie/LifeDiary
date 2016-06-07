@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:Android="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/menu_item_background"
-    Android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    Android:clipToPadding="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <include layout="@layout/toolbar" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@drawable/record_cover"
-            >
+            android:background="@drawable/record_cover">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="@string/record_title"
                 android:textColor="@color/white"
-                android:textSize="35sp"
-                android:layout_centerInParent="true"/>
+                android:textSize="@dimen/display1" />
 
         </RelativeLayout>
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/cardview_dark_background"/>
+            android:layout_height="@dimen/line_divider"
+            android:background="@color/cardview_dark_background" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/record_diary_background"
-            >
+            android:background="@color/record_diary_background">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/diary_name"
-                android:textSize="30sp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="@dimen/record_page_margin_left_text"
+                android:text="@string/diary_name"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/headline" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_diary_fab"
                 android:layout_width="wrap_content"
@@ -55,27 +59,29 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/ic_add"
-                app:backgroundTint ="@color/float_action_button_add_diary"/>
+                app:backgroundTint="@color/float_action_button_add_diary" />
         </RelativeLayout>
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/cardview_dark_background"/>
+            android:layout_height="@dimen/line_divider"
+            android:background="@color/cardview_dark_background" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/record_day_background"
-            >
+            android:background="@color/record_day_background">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/day_name"
-                android:textSize="30sp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="@dimen/record_page_margin_left_text"
+                android:text="@string/day_name"
                 android:textColor="@color/black"
-                />
+                android:textSize="30sp" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_day_fab"
                 android:layout_width="wrap_content"
@@ -84,41 +90,42 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/ic_add"
-                app:backgroundTint ="@color/float_action_button_add_day"/>
+                app:backgroundTint="@color/float_action_button_add_day" />
         </RelativeLayout>
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/cardview_dark_background"/>
+            android:layout_height="@dimen/line_divider"
+            android:background="@color/cardview_dark_background" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/record_plan_background"
-            >
+            android:background="@color/record_plan_background">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/plan_name"
-                android:textSize="30sp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="@dimen/record_page_margin_left_text"
+                android:text="@string/plan_name"
                 android:textColor="@color/black"
-                />
+                android:textSize="30sp" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_plan_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_margin="@dimen/fab_margin"
                 android:src="@drawable/ic_add"
-                android:layout_centerVertical="true"
-                app:backgroundTint ="@color/float_action_button_add_plan"/>
+                app:backgroundTint="@color/float_action_button_add_plan" />
 
         </RelativeLayout>
 
     </LinearLayout>
-
 
 
 </android.support.design.widget.CoordinatorLayout>

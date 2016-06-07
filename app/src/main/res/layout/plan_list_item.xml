@@ -1,81 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/half_margin"
-    android:layout_marginTop="@dimen/small_margin"
     android:layout_marginBottom="@dimen/small_margin"
+    android:layout_marginLeft="@dimen/half_margin"
     android:layout_marginRight="@dimen/half_margin"
+    android:layout_marginTop="@dimen/small_margin"
     android:clickable="true"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/plan_list_item_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/plan_list_item_linearlayout">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/plan_list_item_photo_imageview"
             android:layout_width="@dimen/thumb_size"
             android:layout_height="@dimen/thumb_size"
             android:background="@color/colorTransparentBlack"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/half_margin"
             android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/half_margin"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/plan_list_item_title_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
                 android:layout_marginBottom="@dimen/small_margin"
                 android:maxLines="1"
-                android:text="@string/plan_title"/>
+                android:text="@string/plan_title"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/plan_list_item_location_textview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:maxLines="1"
-                    android:text="@string/plan_location"/>
+                    android:text="@string/diary_location_hint" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:text="@string/plan_divider"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:maxLines="1"
+                    android:text="@string/plan_divider" />
+
                 <TextView
                     android:id="@+id/plan_list_item_time_textview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.8"
-                    android:maxLines="1"
-                    android:text="@string/plan_time"
-                    android:gravity="right"
                     android:layout_gravity="end"
-                    />
+                    android:layout_weight="1.8"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="@string/diary_date_hint" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/plan_list_item_detail_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:maxLines="2"
-                android:text="@string/plan_detail"/>
+                android:test="@string/plan_detail" />
 
         </LinearLayout>
 

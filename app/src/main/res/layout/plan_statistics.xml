@@ -3,66 +3,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:layout_weight="1"
-        android:background="@drawable/urgent">
+        android:background="@drawable/urgent"
+        android:orientation="horizontal">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/urgent"
-            android:textSize="25sp"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="35dp"
-            android:textStyle="bold"
             android:id="@+id/plan_statistics_urgent_title_textview"
-            />
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:layout_below="@id/plan_statistics_urgent_title_textview"
+            android:layout_margin="@dimen/plan_statistics_margin"
+            android:text="@string/urgent"
+            android:textSize="@dimen/headline"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/plan_statistics_urgent_number"
-            android:textStyle="bold"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plan_statistics_urgent_title_textview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/plan_statistics_margin_top"
+            android:textSize="@dimen/headline"
+            android:textStyle="bold" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/cardview_dark_background"/>
+        android:layout_height="@dimen/line_divider"
+        android:background="@color/cardview_dark_background" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
         android:layout_weight="1"
-        android:background="@drawable/normal"
-        >
+        android:background="@drawable/normal">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/normal"
-            android:textSize="25sp"
-            android:layout_gravity="center"
-            android:layout_margin="35dp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
             android:id="@+id/plan_statistics_normal_title_textview"
-            />
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:id="@+id/plan_statistics_normal_number"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/plan_statistics_margin"
+            android:text="@string/normal"
             android:textColor="@color/white"
+            android:textSize="@dimen/headline"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/plan_statistics_normal_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/plan_statistics_normal_title_textview"
-            android:textStyle="bold"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/plan_statistics_margin_top"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </LinearLayout>

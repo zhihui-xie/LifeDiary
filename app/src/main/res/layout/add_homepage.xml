@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Android="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:Android="http://schemas.android.com/tools"
     android:background="@color/menu_item_background"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    Android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    Android:clipToPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +15,6 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
-
-
 
         <ScrollView
             android:layout_width="match_parent"
@@ -26,7 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
 
                 <ImageView
                     android:id="@+id/add_homepage_photo_imageview"
@@ -42,14 +39,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/add_homepage_photo_imageview"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/half_margin"
                     android:ellipsize="end"
                     android:hint="@string/title"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/text_normal"
 
-                    android:textSize="@dimen/title_text_size"
+                    android:textSize="@dimen/headline"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,9 +55,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/add_homepage_title_edittext"
-                    android:layout_marginRight="10dp"
-                    android:hint="June 1st, 2016"
-                    android:inputType="date"/>
+                    android:layout_marginRight="@dimen/half_margin"
+                    android:hint="@string/diary_date_hint"
+                    android:inputType="date"
+                    android:textSize="@dimen/subheading" />
 
                 <EditText
                     android:id="@+id/add_homepage_weather_edittext"
@@ -68,48 +66,42 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/add_homepage_date_textview"
-                    android:layout_marginRight="10dp"
-                    android:hint="Weather"
+                    android:layout_marginRight="@dimen/half_margin"
+                    android:hint="@string/diary_weather_hint"
+                    android:textSize="@dimen/subheading" />
+
+                <EditText
+                    android:id="@+id/add_homepage_text_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/add_homepage_weather_edittext"
+                    android:layout_marginLeft="@dimen/half_margin"
+                    android:layout_marginRight="@dimen/half_margin"
+                    android:hint="@string/text"
+                    android:textColor="@color/text_normal"
                     android:textSize="@dimen/menu_text_size" />
-
-
-
-                    <EditText
-                        android:id="@+id/add_homepage_text_edittext"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:hint="@string/text"
-                        android:textColor="@color/text_normal"
-                        android:textSize="@dimen/menu_text_size"
-                        android:layout_below="@+id/add_homepage_weather_edittext"
-                        />
-
-
 
                 <EditText
                     android:id="@+id/add_homepage_location_edittext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/add_homepage_text_edittext"
-
                     android:layout_alignParentLeft="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:hint="Location" />
+                    android:layout_below="@+id/add_homepage_text_edittext"
+                    android:layout_marginBottom="@dimen/margin_bottom"
+                    android:layout_marginLeft="@dimen/half_margin"
+                    android:hint="@string/diary_location_hint" />
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/add_homepage_location_fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/add_homepage_location_edittext"
                     android:layout_marginBottom="@dimen/fab_margin_down"
                     android:layout_marginLeft="@dimen/fab_margin"
                     android:src="@drawable/ic_locate"
-                    android:layout_below="@+id/add_homepage_location_edittext"
-                    android:layout_alignParentBottom="true"
-                    app:backgroundTint = "@color/menu_item_background"
+                    app:backgroundTint="@color/menu_item_background"
 
                     />
 
@@ -117,14 +109,13 @@
                     android:id="@+id/add_homepage_add_fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@+id/add_homepage_location_edittext"
                     android:layout_marginBottom="@dimen/fab_margin_down"
                     android:layout_marginRight="@dimen/fab_margin"
                     android:src="@drawable/ic_ok"
-                    android:layout_below="@+id/add_homepage_location_edittext"
-                    android:layout_alignParentBottom="true"
-                    app:backgroundTint = "@color/float_action_button_add_diary"
-                    />
+                    app:backgroundTint="@color/float_action_button_add_diary" />
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>
