@@ -42,6 +42,12 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
 
     public interface MyItemClickListener {
         void onItemClick(View view, int position);
+        void onItemLongClick(View view, int position);
+    }
+
+    public void refresh(int postion){
+        mDiaryList.remove(postion);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -87,6 +93,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
             mLayout = (LinearLayout) view.findViewById(R.id.diary_list_item_linearlayout);
             mListener = listener;
             mLayout.setOnClickListener(this);
+            mLayout.setOnLongClickListener(this);
         }
 
         @Override
@@ -98,7 +105,10 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
 
         @Override
         public boolean onLongClick(View v) {
-            return false;
+            if(mListener != null){
+                mListener.onItemLongClick(v, getPosition());
+            }
+            return true;
         }
     }
 }

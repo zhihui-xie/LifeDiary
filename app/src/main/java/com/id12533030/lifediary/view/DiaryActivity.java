@@ -1,8 +1,10 @@
 package com.id12533030.lifediary.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -132,5 +134,29 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
         Intent intent = new Intent(DiaryActivity.this, DiaryDetail.class);
         intent.putExtra(Constants.EXTRA_DIARY, id);
         startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onItemLongClick(View view, final int position) {
+        Diary diary =  mAllDiaryList.get(position);
+        final Long id = diary.getId();
+        AlertDialog.Builder builder = new AlertDialog.Builder(DiaryActivity.this);
+        builder.setMessage("Do you want to delete it?");
+        builder.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Diary delDiary = Diary.findById(Diary.class, id);
+                delDiary.delete();
+                mDairyAdapter.refresh(position);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 }
