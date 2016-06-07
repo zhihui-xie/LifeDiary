@@ -2,7 +2,6 @@ package com.id12533030.lifediary.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -21,6 +20,7 @@ import java.io.IOException;
 
 /**
  * Created by LENOVO on 2016/6/7.
+ * This activity is used to show the details of one diary.
  */
 public class DiaryDetail extends AppCompatActivity {
     private MainMenu mMainMenu;
@@ -28,10 +28,15 @@ public class DiaryDetail extends AppCompatActivity {
     private ImageView mImageVie;
     private TextView mTitle;
     private TextView mDate;
-    private  TextView mLocation;
+    private TextView mLocation;
     private TextView mWeather;
     private TextView mText;
 
+    /**
+     * Override the onCreate method
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,9 @@ public class DiaryDetail extends AppCompatActivity {
         setContent();
     }
 
+    /**
+     * Initial all the widgets
+     */
     private void init() {
         mImageVie = (ImageView) findViewById(R.id.diary_detail_photo_imageview);
         mTitle = (TextView) findViewById(R.id.diary_detail_title_textview);
@@ -53,29 +61,43 @@ public class DiaryDetail extends AppCompatActivity {
         mText = (TextView) findViewById(R.id.diary_detail_text_textview);
     }
 
+    /**
+     * Set the content of all the widgets
+     */
     private void setContent() {
         Intent intent = getIntent();
         long id = intent.getLongExtra(Constants.EXTRA_DIARY, 1);
         Diary diary = Diary.findById(Diary.class, id);
-        try{
+        try {
             ImageTool.showImage(diary.getmPhotoUrl(), mImageVie, 350, 350);
             mTitle.setText(diary.getTitle());
             mDate.setText(DateProcess.getDatetimeAsString(diary.getDate()));
             mLocation.setText(diary.getLocation());
             mWeather.setText(diary.getWeather());
             mText.setText(diary.getText());
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
+    /**
+     * Override the onCreateOptionsMenu method
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         mMainMenu.onCreateOptionsMenu(menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected method
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMainMenu.onOptionsItemSelected(item);

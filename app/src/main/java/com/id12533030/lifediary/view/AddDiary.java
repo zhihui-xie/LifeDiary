@@ -48,6 +48,7 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
 
     /**
      * Override the onCreate method
+     *
      * @param savedInstanceState
      */
     @Override
@@ -79,7 +80,7 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
     }
 
     /**
-     *Set the listener of the location fab, confirmation fab and photo
+     * Set the listener of the location fab, confirmation fab and photo
      */
     private void setListener() {
         mFab.setOnClickListener(this);
@@ -89,6 +90,7 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
 
     /**
      * Implement the onClick method
+     *
      * @param v
      */
     @Override
@@ -139,9 +141,17 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
         mDiary.save();
     }
 
+    /**
+     * Receive the result from other activities.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
+            //Set the photo
             case Constants.PHOTO_REQUEST_GALLERY:
                 if (data != null) {
                     try {
@@ -156,6 +166,7 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
                     }
                 }
                 break;
+            //Get the location from google map
             case Constants.REQUEST_MAP:
                 if (data != null) {
                     mStrLoc = data.getStringExtra(Constants.REQUEST_MAP_RESULT).toString();
@@ -167,12 +178,24 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * Override the onCreateOptionsMenu method
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         mMainMenu.onCreateOptionsMenu(menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected method
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMainMenu.onOptionsItemSelected(item);

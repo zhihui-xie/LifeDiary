@@ -18,16 +18,31 @@ import java.io.IOException;
 
 /**
  * Created by LENOVO on 2016/5/29.
+ * This is the fragment of homepage
  */
 public class MainFragment extends Fragment {
-
     private Diary mDiary;
     private static final String PAGE_KEY = "PAGE";
 
+    /**
+     * Override the onCreateView method
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
+    /**
+     * Implement newInstance to record the status of the fragment and pass the parameter
+     *
+     * @param diary
+     * @return
+     */
     public static MainFragment newInstance(Diary diary) {
         MainFragment fragment = new MainFragment();
 
@@ -40,6 +55,8 @@ public class MainFragment extends Fragment {
 
     /**
      * When creating, retrieve this instance's number from its arguments.
+     *
+     * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +64,10 @@ public class MainFragment extends Fragment {
         mDiary = getArguments() != null ? (Diary) getArguments().getSerializable(PAGE_KEY) : Diary.findById(Diary.class, 1);
     }
 
+    /**
+     * For fragment, the widgets can not be bound in onCreate. Thus, bind the widgets in onStart method
+     * and set the content. For the photo from the folder, it need to included in try-catch
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -68,6 +89,4 @@ public class MainFragment extends Fragment {
         date.setText(String.valueOf(DateProcess.getDatetimeAsString(mDiary.getDate())));
         text.setText(mDiary.getText());
     }
-
-
 }

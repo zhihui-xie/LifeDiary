@@ -271,8 +271,9 @@ public class MainMenu implements OnMenuItemClickListener {
                 mMenuDialogFragment.startActivityForResult(myIntent, Constants.REQUEST_RECORD);
                 break;
             default:
-                //Exit the app
-                System.exit(0);
+                //Exit the App
+                mAppCompatActivity.finishAffinity();
+
         }
     }
 }

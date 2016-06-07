@@ -24,6 +24,8 @@ import java.io.IOException;
 
 /**
  * Created by LENOVO on 2016/5/31.
+ * This activity is for users to set the information of themselves. They can select a photo in their
+ * phone as their profile
  */
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     private MainMenu mMainMenu;
@@ -40,6 +42,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private ImageTool mImageTool;
     private static final String PIC_NAME = "profile";
 
+    /**
+     * Override the onCreate method
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,23 +58,35 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         init();
         setListener();
         loadInfo();
-
-
     }
 
-
+    /**
+     * Override the onCreateOptionsMenu method
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         mMainMenu.onCreateOptionsMenu(menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected method
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMainMenu.onOptionsItemSelected(item);
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Initial all the widgets
+     */
     private void init() {
         mImageView = (ImageView) findViewById(R.id.setting_main_profile_imageview);
         mName = (EditText) findViewById(R.id.setting_main_name_edittext);
@@ -77,11 +96,19 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mButton = (Button) findViewById(R.id.setting_main_ok_button);
     }
 
-    private void setListener(){
+    /**
+     * Set the listener of button and imageView
+     */
+    private void setListener() {
         mButton.setOnClickListener(this);
         mImageView.setOnClickListener(this);
     }
 
+    /**
+     * Implement the click function
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -97,13 +124,16 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * Store the information of user
+     */
     private void storeInfo() {
         Setting setting = new Setting();
         if (Setting.listAll(Setting.class).size() != 0) {
             setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
         }
         mPhotoUrl = Constants.PIC_URLS[4] + PIC_NAME + Constants.PIC_FORMAT;
-        if (mBitmap != null){
+        if (mBitmap != null) {
             mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[4], PIC_NAME);
         }
         setting.setPhotoUrl(mPhotoUrl);
@@ -115,9 +145,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         setting.save();
     }
 
+    /**
+     * Load the information of user
+     */
     private void loadInfo() {
         if (Setting.listAll(Setting.class).size() != 0) {
-            Setting setting = Setting.findById(Setting.class,  Constants.SETTING_INDEX);
+            Setting setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
             mName.setText(setting.getName());
             mGender.setText(setting.getGender());
             String age = setting.getAge() != -1 ? String.valueOf(setting.getAge()) : "";
@@ -131,21 +164,26 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-
-
+    /**
+     * Select a photo as profile
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        switch (requestCode){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
             case Constants.PHOTO_REQUEST_GALLERY:
-                if(data != null){
+                if (data != null) {
                     Uri uri = data.getData();
                     mImageTool.crop(uri);
                 }
                 break;
             case Constants.PHOTO_REQUEST_CUT:
-                if (data != null){
+                if (data != null) {
                     mBitmap = data.getParcelableExtra("data");
-                    if (mBitmap != null){
+                    if (mBitmap != null) {
                         mImageView.setImageBitmap(mBitmap);
                     }
                 }

@@ -37,8 +37,11 @@ import com.id12533030.lifediary.service.FetchAddressIntentService;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
 
+/**
+ * This activity is used to get the location through google map and send back the result. To get
+ * the location, user have to switch on GPS and connect to the Internet
+ */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, ConnectionCallbacks, OnConnectionFailedListener, View.OnClickListener {
-
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient = null;
     private Location mLastLocation;
@@ -46,6 +49,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FloatingActionButton mFab;
     private TextView mTextLoc;
     private MainMenu mMainMenu;
+    private static final String NO_GPS_OR_NETWORK = "Location unavailable. Try again later.";
+    private static final String LOCATION_MARK = "Your loacation";
 
     /**
      * Receiver registered with this activity to get the response from FetchAddressIntentService.
@@ -72,7 +77,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     ProgressBar mProgressBar;
 
-
+    /**
+     * Override the onCreate method
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,18 +105,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Override the onCreateOptionsMenu method
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         mMainMenu.onCreateOptionsMenu(menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected method
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMainMenu.onOptionsItemSelected(item);
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Initial all the widgets
+     */
     private void init() {
         // Set defaults, then update using values stored in the Bundle.
         mAddressRequested = false;
@@ -120,10 +144,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
     }
 
+    /**
+     * set the listener to the fab
+     */
     private void setListener() {
         mFab.setOnClickListener(this);
     }
 
+    /**
+     * Start the intent service to get the address
+     */
     protected void startIntentService() {
         Intent intent = new Intent(this, FetchAddressIntentService.class);
         intent.putExtra(Constants.RECEIVER, mResultReceiver);
@@ -149,26 +179,36 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.setMyLocationEnabled(true);
         } else {
             // Show rationale and request permission.
-            Toast.makeText(this, "Location unavailable. Try again later.", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, NO_GPS_OR_NETWORK, Toast.LENGTH_LONG).show();
         }
-
     }
 
+    /**
+     * Override the onStart method
+     */
     @Override
     protected void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
     }
 
+    /**
+     * Override the onStop method
+     */
     @Override
     protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
     }
 
+    /**
+     * Connect to get the address
+     *
+     * @param bundle
+     */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        //Check the GPS and Network
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -185,23 +225,38 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             if (mAddressRequested) {
                 mLatLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(mLatLng).title("Your loacation"));
+                mMap.addMarker(new MarkerOptions().position(mLatLng).title(LOCATION_MARK));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(mLatLng));
                 startIntentService();
             }
         }
     }
 
+    /**
+     * Implement the onConnectionSuspended method
+     *
+     * @param i
+     */
     @Override
     public void onConnectionSuspended(int i) {
         return;
     }
 
+    /**
+     * Implement the onConnectionFailed method
+     *
+     * @param connectionResult
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         return;
     }
 
+    /**
+     * Implement the click listener and get the address by starting the intent service
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -209,9 +264,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Only start the service to fetch the address if GoogleApiClient is
                 // connected.
                 if (mGoogleApiClient.isConnected() && mLastLocation != null) {
+                    mLatLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(mLatLng).title(LOCATION_MARK));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(mLatLng));
                     startIntentService();
                 }
-
                 // If GoogleApiClient isn't connected, process the user's request by
                 // setting mAddressRequested to true. Later, when GoogleApiClient connects,
                 // launch the service to fetch the address. As far as the user is
@@ -219,8 +276,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // immediately kicks off the process of getting the address.
                 mAddressRequested = true;
                 updateUIWidgets();
-
-
                 break;
             default:
                 break;
@@ -245,6 +300,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         /**
          * Receives data sent from FetchAddressIntentService and updates the UI in MainActivity.
+         *
+         * @param resultCode
+         * @param resultData
          */
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {

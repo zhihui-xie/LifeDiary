@@ -25,8 +25,9 @@ import com.id12533030.lifediary.util.MainMenu;
 
 /**
  * Created by LENOVO on 2016/6/7.
+ * This activity is used to provide interface for users to record diary, day and plan.
  */
-public class RecordActivity extends AppCompatActivity implements View.OnClickListener{
+public class RecordActivity extends AppCompatActivity implements View.OnClickListener {
     private MainMenu mMainMenu;
     private FragmentManager mFragmentManager;
     private FloatingActionButton mDiaryFab;
@@ -42,6 +43,11 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
     private TextView mDateDay;
     private Spinner mSpinner;
 
+    /**
+     * Override the onCreate method and initial the toolbar and systembar
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,30 +59,53 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         setListener();
     }
 
+    /**
+     * Initial all the widgets
+     */
     private void init() {
         mDiaryFab = (FloatingActionButton) findViewById(R.id.record_function_main_diary_fab);
         mDayFab = (FloatingActionButton) findViewById(R.id.record_function_main_day_fab);
         mPlanFab = (FloatingActionButton) findViewById(R.id.record_function_main_plan_fab);
     }
 
+    /**
+     * Set the listener for three fabs
+     */
     private void setListener() {
         mDiaryFab.setOnClickListener(this);
         mDayFab.setOnClickListener(this);
         mPlanFab.setOnClickListener(this);
     }
 
+    /**
+     * Override the onCreateOptionsMenu method
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         mMainMenu.onCreateOptionsMenu(menu);
         return true;
     }
 
+    /**
+     * Override the onOptionsItemSelected method
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         mMainMenu.onOptionsItemSelected(item);
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Implement the click function
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         Intent intent;
@@ -97,13 +126,20 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void showPlanDialog(LayoutInflater inflater, View view){
-        view = inflater.inflate(R.layout.add_plan,(ViewGroup) findViewById(R.id.add_plan_dialog) );
+    /**
+     * Show the plan dialog for users to create a new plan
+     *
+     * @param inflater
+     * @param view
+     */
+    private void showPlanDialog(LayoutInflater inflater, View view) {
+        view = inflater.inflate(R.layout.add_plan, (ViewGroup) findViewById(R.id.add_plan_dialog));
         initPlan(view);
-        new AlertDialog.Builder(this).setTitle("Create a New Plan").setView(view)
-                .setPositiveButton(Constants.CONFIRM,  new DialogInterface.OnClickListener(){
+        new AlertDialog.Builder(this).setTitle(Constants.CREATE_PLAN_DIALOG_TITLE).setView(view)
+                .setPositiveButton(Constants.CONFIRM, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //Set the type of plan
                         int type = mRadioGroup.getCheckedRadioButtonId() == R.id.add_plan_urgent_radiobutton ? 0 : 1;
                         Plan plan = new Plan(type,
                                 mTitlePlan.getText().toString(),
@@ -115,16 +151,19 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
                         dialog.dismiss();
                     }
                 })
-                .setNegativeButton(Constants.CANCEL, new DialogInterface.OnClickListener(){
-
+                .setNegativeButton(Constants.CANCEL, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 }).create().show();
-
     }
 
+    /**
+     * Initial all the widgets of plan dialog
+     *
+     * @param view
+     */
     private void initPlan(View view) {
         mTitlePlan = (TextView) view.findViewById(R.id.add_plan_title_textview);
         mDetailPlan = (TextView) view.findViewById(R.id.add_plan_text_textview);
@@ -134,11 +173,17 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         mRadioGroup.getChildAt(0).setSelected(true);
     }
 
+    /**
+     * Show the plan dialog for users to create a new day
+     *
+     * @param inflater
+     * @param view
+     */
     private void showDayDialog(LayoutInflater inflater, View view) {
-        view = inflater.inflate(R.layout.add_day,(ViewGroup) findViewById(R.id.add_day_dialog) );
+        view = inflater.inflate(R.layout.add_day, (ViewGroup) findViewById(R.id.add_day_dialog));
         initDay(view);
-        new AlertDialog.Builder(this).setTitle("Create an Important Day").setView(view)
-                .setPositiveButton(Constants.CONFIRM,  new DialogInterface.OnClickListener(){
+        new AlertDialog.Builder(this).setTitle(Constants.CREATE_DAY_DIALOG_TITLE).setView(view)
+                .setPositiveButton(Constants.CONFIRM, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int i = mSpinner.getSelectedItemPosition();
@@ -151,8 +196,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
                         dialog.dismiss();
                     }
                 })
-                .setNegativeButton(Constants.CANCEL, new DialogInterface.OnClickListener(){
-
+                .setNegativeButton(Constants.CANCEL, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -160,7 +204,12 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
                 }).create().show();
     }
 
-    private void initDay(View view){
+    /**
+     * Initial all the widgets of day dialog
+     *
+     * @param view
+     */
+    private void initDay(View view) {
         mTitleDay = (TextView) view.findViewById(R.id.add_day_title_textview);
         mDetailDay = (TextView) view.findViewById(R.id.add_day_text_textview);
         mDateDay = (TextView) view.findViewById(R.id.add_day_date_textview);
