@@ -41,6 +41,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private static Bitmap mBitmap;
     private ImageTool mImageTool;
     private static final String PIC_NAME = "profile";
+    private static final String DATA = "data";
 
     /**
      * Override the onCreate method
@@ -132,9 +133,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         if (Setting.listAll(Setting.class).size() != 0) {
             setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
         }
-        mPhotoUrl = Constants.PIC_URLS[4] + PIC_NAME + Constants.PIC_FORMAT;
+        mPhotoUrl = Constants.PIC_URLS[1] + PIC_NAME + Constants.PIC_FORMAT;
         if (mBitmap != null) {
-            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[4], PIC_NAME);
+            mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[1], PIC_NAME);
         }
         setting.setPhotoUrl(mPhotoUrl);
         setting.setName(mName.getText().toString());
@@ -182,7 +183,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case Constants.PHOTO_REQUEST_CUT:
                 if (data != null) {
-                    mBitmap = data.getParcelableExtra("data");
+                    mBitmap = data.getParcelableExtra(DATA);
                     if (mBitmap != null) {
                         mImageView.setImageBitmap(mBitmap);
                     }

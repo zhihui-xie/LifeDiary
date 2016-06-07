@@ -20,6 +20,7 @@ import com.id12533030.lifediary.model.Plan;
 import com.id12533030.lifediary.util.Constants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by LENOVO on 2016/6/6.
@@ -92,6 +93,7 @@ public class PlanListFragment extends Fragment implements PlanListAdapter.MyItem
         super.onViewCreated(view, savedInstanceState);
         mAllPlanList = (ArrayList<Plan>) Plan.listAll(Plan.class);
         mTypePlanList = (ArrayList<Plan>) Plan.findWithQuery(Plan.class, SELECT_PLAN_BY_TYPE, String.valueOf(mType));
+        Collections.reverse(mTypePlanList);
         setAdapter();
     }
 

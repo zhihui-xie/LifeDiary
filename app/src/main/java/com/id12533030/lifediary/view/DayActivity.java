@@ -79,7 +79,7 @@ public class DayActivity extends EuclidActivity {
 
         final ArrayList<Day> dayList = (ArrayList<Day>) Day.listAll(Day.class);
         final int len = dayList.size();
-        for (int i = 0; i < len; ++i) {
+        for (int i = len - 1; i >= 0; --i) {
             Day day = dayList.get(i);
             profileMap = new HashMap<>();
             profileMap.put(EuclidListAdapter.KEY_AVATAR, chooseImage(day.getType()));

@@ -21,7 +21,8 @@
             android:layout_width="@dimen/thumb_size"
             android:layout_height="@dimen/thumb_size"
             android:background="@color/colorTransparentBlack"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"

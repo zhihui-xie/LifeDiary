@@ -26,6 +26,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
     private LayoutInflater mInflater;
     private ArrayList<Diary> mDiaryList;
     private MyItemClickListener mItemClickListener = null;
+    private Context mContext;
 
     /**
      * Define the ItemClickListener interface
@@ -45,6 +46,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
     public DiaryListAdapter(Context context, ArrayList<Diary> data) {
         mInflater = LayoutInflater.from(context);
         mDiaryList = data;
+        mContext = context;
     }
 
     /**
@@ -92,6 +94,10 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
         holder.mTitle.setText(diary.getTitle());
         holder.mDetail.setText(diary.getText());
         holder.mDatetime.setText(DateProcess.getDatetimeAsString(diary.getDate()));
+        if (diary.getmPhotoUrl().equals("")) {
+            holder.mPhoto.setImageDrawable(mContext.getResources().getDrawable(R.drawable.homepage_default));
+            return;
+        }
         try {
             ImageTool.showImage(diary.getmPhotoUrl(), holder.mPhoto, Constants.LIST_ITEM_SIZE, Constants.LIST_ITEM_SIZE);
         } catch (IOException e) {
