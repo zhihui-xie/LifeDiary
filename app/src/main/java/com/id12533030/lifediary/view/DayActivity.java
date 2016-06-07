@@ -43,28 +43,6 @@ public class DayActivity extends EuclidActivity {
     }
 
     /**
-     * Test the app
-     */
-    private void testMethod() {
-        for (int i = 0; i < 2; ++i) {
-            Day day = new Day(0, "Birthday", "06.06.2016", "Important day");
-            day.save();
-        }
-        for (int i = 0; i < 2; ++i) {
-            Day day = new Day(1, "Anniversary", "05.06.2016", "Important day");
-            day.save();
-        }
-        for (int i = 0; i < 2; ++i) {
-            Day day = new Day(2, "Festival", "04.06.2016", "Important day");
-            day.save();
-        }
-        for (int i = 0; i < 2; ++i) {
-            Day day = new Day(3, "Others", "01.06.2016", "Important day");
-            day.save();
-        }
-    }
-
-    /**
      * Get Adapter and set the list of Day
      *
      * @return
@@ -73,9 +51,6 @@ public class DayActivity extends EuclidActivity {
     protected BaseAdapter getAdapter() {
         Map<String, Object> profileMap;
         List<Map<String, Object>> profilesList = new ArrayList<>();
-        if (Day.listAll(Day.class).size() == 0) {
-            testMethod();
-        }
 
         final ArrayList<Day> dayList = (ArrayList<Day>) Day.listAll(Day.class);
         final int len = dayList.size();

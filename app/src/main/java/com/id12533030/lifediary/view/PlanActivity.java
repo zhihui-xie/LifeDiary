@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.id12533030.lifediary.R;
-import com.id12533030.lifediary.model.Plan;
 import com.id12533030.lifediary.util.MainMenu;
 
 import butterknife.ButterKnife;
@@ -47,27 +46,9 @@ public class PlanActivity extends AppCompatActivity {
         mMainMenu.initSystemBar(this);
         init();
 
-        if (Plan.listAll(Plan.class).size() == 0) {
-            testMethod();
-        }
-
         ButterKnife.bind(this);
         setupBlurView();
         setupViewPager();
-    }
-
-    /**
-     * Test the app
-     */
-    private void testMethod() {
-        for (int i = 0; i < 10; ++i) {
-            Plan plan = new Plan(0, "Urgent", "07.06.2016", "Sydney", "Urgent plan");
-            plan.save();
-        }
-        for (int i = 0; i < 10; ++i) {
-            Plan plan = new Plan(1, "Normal", "08.06.2016", "Melbourne", "Normal plan");
-            plan.save();
-        }
     }
 
     /**

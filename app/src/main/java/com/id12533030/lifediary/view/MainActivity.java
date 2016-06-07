@@ -45,19 +45,8 @@ public class MainActivity extends AppCompatActivity {
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
-        if (Diary.listAll(Diary.class).size() == 0) {
-            testMethod();
-        }
-    }
+        createOnePage();
 
-    /**
-     * Test the app
-     */
-    private void testMethod() {
-        for (int i = 0; i < 5; ++i) {
-            Diary diary2 = new Diary("", DEFAULT_TITLE, System.currentTimeMillis(), DEFAULT_WEATHER, DEFAULT_DETAIL, DEFAULT_LOCATION);
-            diary2.save();
-        }
     }
 
     /**
@@ -72,10 +61,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
         mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, diaries);
         mViewPager.setAdapter(mPagerAdapter);
-        if (Diary.listAll(Diary.class).size() == 0) {
-            Diary diary = new Diary("", DEFAULT_TITLE, System.currentTimeMillis(), DEFAULT_WEATHER, DEFAULT_DETAIL, DEFAULT_LOCATION);
-            diary.save();
-        }
+        createOnePage();
     }
 
     /**
@@ -111,6 +97,16 @@ public class MainActivity extends AppCompatActivity {
             if (!FPath.exists()) {
                 FPath.mkdirs();
             }
+        }
+    }
+
+    /**
+     * If there is no diary in the app, create one diary to show a sample.
+     */
+    private void createOnePage(){
+        if (Diary.listAll(Diary.class).size() == 0) {
+            Diary diary = new Diary("", DEFAULT_TITLE, System.currentTimeMillis(), DEFAULT_WEATHER, DEFAULT_DETAIL, DEFAULT_LOCATION);
+            diary.save();
         }
     }
 }
