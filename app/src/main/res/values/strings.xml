@@ -37,6 +37,16 @@
     <string name="record_title">Record Your Life</string>
     <string name="diary_detail_name">Diary Detail</string>
     <string name="diary_datetime">08.06.2016</string>
-    <string name="diary_detail">Your valueable memory.</string>
+    <string name="diary_detail">Your valuable memory.</string>
+    <string name="add_plan_title">Plan Title :</string>
+    <string name="add_plan_date">Plan Date :</string>
+    <string name="add_plan_location">Plan Location :</string>
+    <string name="add_plan_detail">Plan Detail :</string>
+    <string name="add_day_title">Title :</string>
+    <string name="add_day_date">Date :</string>
+    <string name="add_day_detail">Detail :</string>
+    <string name="urgent">Urgent Plans :</string>
+    <string name="normal">Normal Plans :</string>
+    <string name="plan_number">20</string>
 
 </resources>

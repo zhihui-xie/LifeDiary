@@ -45,7 +45,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         mImageTool = new ImageTool(this);
         init();

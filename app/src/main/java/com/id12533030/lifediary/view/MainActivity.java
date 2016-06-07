@@ -34,14 +34,18 @@ public class MainActivity extends AppCompatActivity {
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
-        if (Diary.listAll(Diary.class).size() == 0) {
-            Diary diary = new Diary("", "Welcome", System.currentTimeMillis(), "UTS", "Record your valuable moment", "Designed by Zhihui Xie");
-            diary.save();
-        }
-
+        testMethod();
 
     }
 
+    private void testMethod(){
+        Diary diary1 = new Diary("", "Welcome", System.currentTimeMillis() - 86400, "Sunny", "Record your valuable moment", "Designed by Zhihui Xie, UTS");
+        diary1.save();
+        for (int i = 0; i < 5; ++i){
+            Diary diary2 = new Diary("", "Welcome", System.currentTimeMillis(), "Sunny", "Record your valuable moment", "Designed by Zhihui Xie, UTS");
+            diary2.save();
+        }
+    }
 
     @Override
     protected void onStart() {
@@ -51,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.activity_main_container_viewPager);
         mPagerAdapter = new MyFragmentPagerAdapter(mFragmentManager, diaries);
         mViewPager.setAdapter(mPagerAdapter);
+        if (Diary.listAll(Diary.class).size() == 0) {
+            Diary diary = new Diary("", "Welcome", System.currentTimeMillis(), "UTS", "Record your valuable moment", "Designed by Zhihui Xie");
+            diary.save();
+        }
     }
 
     @Override

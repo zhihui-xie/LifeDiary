@@ -50,7 +50,7 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         mAllDiaryList = (ArrayList<Diary>) Diary.listAll(Diary.class);
         init();
@@ -142,16 +142,16 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
         final Long id = diary.getId();
         AlertDialog.Builder builder = new AlertDialog.Builder(DiaryActivity.this);
         builder.setMessage("Do you want to delete it?");
-        builder.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(Constants.CONFIRM, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Diary delDiary = Diary.findById(Diary.class, id);
                 delDiary.delete();
-                mDairyAdapter.refresh(position);
+                mDairyAdapter.deleteItem(position);
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(Constants.CANCEL, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

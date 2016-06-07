@@ -44,5 +44,7 @@ public class Constants {
 
     public final static int LIST_ITEM_SIZE = 80;
     public final static String EXTRA_DIARY = "com.id12533030.lifediary.view.DIARY";
+    public final static String CONFIRM = "Confirm";
+    public final static String CANCEL = "Cancel";
 
 }

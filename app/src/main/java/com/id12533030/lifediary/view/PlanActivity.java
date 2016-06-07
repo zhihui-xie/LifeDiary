@@ -38,16 +38,30 @@ public class PlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         init();
+        testMethod();
 
-        Plan plan = new Plan("", "Day", Calendar.getInstance().getTimeInMillis(),"Sydney", "Important day");
-        plan.save();
 
         ButterKnife.bind(this);
         setupBlurView();
         setupViewPager();
+    }
+
+    private void testMethod(){
+        for (int i = 0; i < 20; ++i){
+            Plan plan = new Plan(0, "Urgent", "07.06.2016","Sydney", "Urgent plan", 0);
+            plan.save();
+        }
+        for (int i = 0; i < 20; ++i){
+            Plan plan = new Plan(1, "Normal", "08.06.2016","Melbourne", "Normal plan", 0);
+            plan.save();
+        }
+        for (int i = 0; i < 20; ++i){
+            Plan plan = new Plan(1, "Completed", "07.06.2016","Brisbane", "Completed", 1);
+            plan.save();
+        }
     }
 
     private void init() {
@@ -86,11 +100,11 @@ public class PlanActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (Page.values()[position]) {
                 case FIRST:
-                    return new PlanListFragment();
+                    return PlanListFragment.newInstance(0);
                 case SECOND:
-                    return new PlanListFragment();
+                    return PlanListFragment.newInstance(1);
                 case THIRD:
-                    return new PlanListFragment();
+                    return new PlanStatisticsFragment();
             }
             return null;
         }
@@ -107,8 +121,8 @@ public class PlanActivity extends AppCompatActivity {
     }
 
     enum Page {
-        FIRST("Ongoing"),
-        SECOND("Completed"),
+        FIRST("Urgent"),
+        SECOND("Normal"),
         THIRD("Statistics");
 
         private String title;

@@ -45,7 +45,7 @@ public class DiaryListAdapter extends RecyclerView.Adapter<DiaryListAdapter.Hold
         void onItemLongClick(View view, int position);
     }
 
-    public void refresh(int postion){
+    public void deleteItem(int postion){
         mDiaryList.remove(postion);
         notifyDataSetChanged();
     }

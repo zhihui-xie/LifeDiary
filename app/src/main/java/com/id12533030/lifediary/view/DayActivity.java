@@ -33,8 +33,8 @@ public class DayActivity extends EuclidActivity {
         super.onCreate(savedInstanceState);
 
         mMainMenu.initSystemBar(this);
-//
-        Day day = new Day("", "Day", Calendar.getInstance().getTimeInMillis(), "Important day");
+        testMethod();
+        Day day = new Day(1, "Day", "06.06.2016", "Important day");
         day.save();
         mButtonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,16 +44,35 @@ public class DayActivity extends EuclidActivity {
         });
     }
 
+    private void testMethod(){
+        for (int i = 0; i < 5; ++i){
+            Day day = new Day(0, "Birthday", "06.06.2016", "Important day");
+            day.save();
+        }
+        for (int i = 0; i < 5; ++i){
+            Day day = new Day(1, "Anniversary", "05.06.2016", "Important day");
+            day.save();
+        }
+        for (int i = 0; i < 5; ++i){
+            Day day = new Day(2, "Festival", "04.06.2016", "Important day");
+            day.save();
+        }
+        for (int i = 0; i < 5; ++i){
+            Day day = new Day(3, "Others", "01.06.2016", "Important day");
+            day.save();
+        }
+    }
+
     @Override
     protected BaseAdapter getAdapter() {
         Map<String, Object> profileMap;
         List<Map<String, Object>> profilesList = new ArrayList<>();
 
         int[] avatars = {
-                R.drawable.f1,
-                R.drawable.f2,
-                R.drawable.f3,
-                R.drawable.f4,
+                R.drawable.birthday,
+                R.drawable.anniversary,
+                R.drawable.festival,
+                R.drawable.others,
                 };
 
 //        String[] names = getResources().getStringArray(R.array.array_names);
