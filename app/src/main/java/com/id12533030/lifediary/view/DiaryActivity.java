@@ -25,6 +25,7 @@ import com.id12533030.lifediary.util.MainMenu;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -61,7 +62,6 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
         mFragmentManager = getSupportFragmentManager();
         mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mMainMenu.initSystemBar(this);
-        mAllDiaryList = (ArrayList<Diary>) Diary.listAll(Diary.class);
         init();
         setAdapter();
         setListener();
@@ -90,20 +90,22 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
     }
 
     /**
+     * Set the adapter and pass the list of diary
+     */
+    private void setAdapter() {
+        mAllDiaryList = (ArrayList<Diary>) Diary.listAll(Diary.class);
+        Collections.reverse(mAllDiaryList);
+        mDairyAdapter = new DiaryListAdapter(this, mAllDiaryList);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mDairyAdapter);
+    }
+
+    /**
      * Set the listener of calendar and adapter
      */
     private void setListener() {
         mCompactCalendarView.setListener(this);
         mDairyAdapter.setOnItemClickListener(this);
-    }
-
-    /**
-     * Set the adapter and pass the list of diary
-     */
-    private void setAdapter() {
-        mDairyAdapter = new DiaryListAdapter(this, mAllDiaryList);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mDairyAdapter);
     }
 
     /**
@@ -170,7 +172,9 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
                 selectedDiary.add(diary);
             }
         }
-        mRecyclerView.setAdapter(new DiaryListAdapter(this, selectedDiary));
+        mDairyAdapter = new DiaryListAdapter(this, selectedDiary);
+        mDairyAdapter.setOnItemClickListener(this);
+        mRecyclerView.setAdapter(mDairyAdapter);
     }
 
     /**
