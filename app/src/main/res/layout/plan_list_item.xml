@@ -76,9 +76,8 @@
                 android:id="@+id/plan_list_item_detail_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:maxLines="2"
-                android:test="@string/plan_detail" />
+                android:text="@string/plan_detail" />
 
         </LinearLayout>
 
