@@ -42,7 +42,7 @@
             android:label="@string/setting_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.AddHomePage"
+            android:name=".view.AddDiary"
             android:label="@string/add_homepage_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />

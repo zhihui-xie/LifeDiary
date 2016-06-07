@@ -1,8 +1,9 @@
 package com.id12533030.lifediary.service;
 
 import android.app.IntentService;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
 
-import android.location.Address;
 import com.id12533030.lifediary.R;
 import com.id12533030.lifediary.util.Constants;
 
@@ -22,9 +22,11 @@ import java.util.Locale;
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
  * a service on a separate handler thread.
- * <p/>
+ * <p>
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
+ * <p>
+ * This intent service is used to fetch the address list based on the location of GPS.
  */
 public class FetchAddressIntentService extends IntentService {
     // TODO: Rename actions, choose action names that describe tasks that this
@@ -35,11 +37,17 @@ public class FetchAddressIntentService extends IntentService {
     // TODO: Rename parameters
     private static final String EXTRA_PARAM1 = "com.id12533030.lifediary.service.extra.PARAM1";
     private static final String EXTRA_PARAM2 = "com.id12533030.lifediary.service.extra.PARAM2";
+    private static final String LINE_SEPARATOR = "line.separator";
+    private static final String NO_IMPLEMENT = "Not yet implemented";
     /**
      * The receiver where results are forwarded from this service.
      */
     protected ResultReceiver mReceiver;
     private static final String TAG = "FetchAddressIS";
+
+    /**
+     * Constructor of FetchAddressIntentService
+     */
     public FetchAddressIntentService() {
         super(TAG);
     }
@@ -74,12 +82,16 @@ public class FetchAddressIntentService extends IntentService {
         context.startService(intent);
     }
 
+    /**
+     * Handle the intent service
+     *
+     * @param intent
+     */
     @Override
     protected void onHandleIntent(Intent intent) {
-
         String errorMessage = "";
         mReceiver = intent.getParcelableExtra(Constants.RECEIVER);
-        if (mReceiver == null){
+        if (mReceiver == null) {
             Log.e(TAG, getString(R.string.nothing_receive));
             return;
         }
@@ -112,13 +124,13 @@ public class FetchAddressIntentService extends IntentService {
             // Catch invalid latitude or longitude values.
             errorMessage = getString(R.string.invalid_lat_long_used);
             Log.e(TAG, errorMessage + ". " +
-                    "Latitude = " + location.getLatitude() +
-                    ", Longitude = " +
+                    Constants.LATITUDE + " = " + location.getLatitude() +
+                    ", " + Constants.LONGITUDE + " = " +
                     location.getLongitude(), illegalArgumentException);
         }
 
         // Handle case where no address was found.
-        if (addresses == null || addresses.size()  == 0) {
+        if (addresses == null || addresses.size() == 0) {
             if (errorMessage.isEmpty()) {
                 errorMessage = getString(R.string.no_address_found);
                 Log.e(TAG, errorMessage);
@@ -130,12 +142,12 @@ public class FetchAddressIntentService extends IntentService {
 
             // Fetch the address lines using getAddressLine,
             // join them, and send them to the thread.
-            for(int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+            for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
                 addressFragments.add(address.getAddressLine(i));
             }
             Log.i(TAG, getString(R.string.address_found));
             deliverResultToReceiver(Constants.SUCCESS_RESULT,
-                    TextUtils.join(System.getProperty("line.separator"),
+                    TextUtils.join(System.getProperty(LINE_SEPARATOR),
                             addressFragments));
         }
 
@@ -153,6 +165,12 @@ public class FetchAddressIntentService extends IntentService {
         }
     }
 
+    /**
+     * Deliver the result to receiver
+     *
+     * @param resultCode
+     * @param message
+     */
     private void deliverResultToReceiver(int resultCode, String message) {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.RESULT_DATA_KEY, message);
@@ -161,7 +179,10 @@ public class FetchAddressIntentService extends IntentService {
 
     /**
      * Handle action Foo in the provided background thread with the provided
-     * parameters.
+     * parameters
+     *
+     * @param param1
+     * @param param2
      */
     private void handleActionFoo(String param1, String param2) {
         // TODO: Handle action Foo
@@ -171,9 +192,12 @@ public class FetchAddressIntentService extends IntentService {
     /**
      * Handle action Baz in the provided background thread with the provided
      * parameters.
+     *
+     * @param param1
+     * @param param2
      */
     private void handleActionBaz(String param1, String param2) {
         // TODO: Handle action Baz
-        throw new UnsupportedOperationException("Not yet implemented");
+        throw new UnsupportedOperationException(NO_IMPLEMENT);
     }
 }

@@ -102,7 +102,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         if (Setting.listAll(Setting.class).size() != 0) {
             setting = Setting.findById(Setting.class, Constants.SETTING_INDEX);
         }
-        mPhotoUrl = Constants.PIC_URLS[4] + PIC_NAME + Constants.PIC_FOMATE;
+        mPhotoUrl = Constants.PIC_URLS[4] + PIC_NAME + Constants.PIC_FORMAT;
         if (mBitmap != null){
             mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[4], PIC_NAME);
         }

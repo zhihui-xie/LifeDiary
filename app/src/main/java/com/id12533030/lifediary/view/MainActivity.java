@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     private void createImageFolder() {
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < Constants.PIC_URLS.length; ++i) {
             File FPath = new File(Constants.PIC_URLS[i]);
             if (!FPath.exists()) {
                 FPath.mkdirs();

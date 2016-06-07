@@ -23,8 +23,6 @@ import com.id12533030.lifediary.model.Plan;
 import com.id12533030.lifediary.util.Constants;
 import com.id12533030.lifediary.util.MainMenu;
 
-import java.util.ArrayList;
-
 /**
  * Created by LENOVO on 2016/6/7.
  */
@@ -85,7 +83,7 @@ public class RecordActivity extends AppCompatActivity implements View.OnClickLis
         LayoutInflater inflater = getLayoutInflater();
         switch (v.getId()) {
             case R.id.record_function_main_diary_fab:
-                intent = new Intent(RecordActivity.this, AddHomePage.class);
+                intent = new Intent(RecordActivity.this, AddDiary.class);
                 startActivityForResult(intent, Constants.REQUEST_ADD_HOMEPAGE);
                 break;
             case R.id.record_function_main_day_fab:

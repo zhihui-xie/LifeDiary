@@ -27,8 +27,9 @@ import java.io.IOException;
 
 /**
  * Created by LENOVO on 2016/6/3.
+ * The class AddDiary is the activity to add a new dairy
  */
-public class AddHomePage extends AppCompatActivity implements View.OnClickListener {
+public class AddDiary extends AppCompatActivity implements View.OnClickListener {
     private MainMenu mMainMenu;
     private ImageView mImageView;
     private EditText mTitle;
@@ -45,45 +46,26 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
     private static Bitmap mBitmap;
     private static String mStrLoc = "";
 
-
+    /**
+     * Override the onCreate method
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_homepage);
         mMainMenu = new MainMenu(this, true, false);
+        //Init the systembar and make it the same color as the toolbar
         mMainMenu.initSystemBar(this);
+        mImageTool = new ImageTool(this);
         init();
         setListener();
-        loadInfo();
+        loadDatetime();
     }
 
-    private void setListener() {
-        mFab.setOnClickListener(this);
-        mFabLoc.setOnClickListener(this);
-        mImageView.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.add_homepage_add_fab:
-                storeInfo();
-                Snackbar.make(v, Constants.ADD_SUCCESSFULLY, Snackbar.LENGTH_LONG).show();
-                finish();
-                break;
-            case R.id.add_homepage_location_fab:
-                intent = new Intent(AddHomePage.this, MapsActivity.class);
-                startActivityForResult(intent, Constants.REQUEST_MAP);
-                break;
-            case R.id.add_homepage_photo_imageview:
-                mImageTool.gallery();
-                break;
-            default:
-                break;
-        }
-    }
-
+    /**
+     * Init alll the widgets
+     */
     private void init() {
         mImageView = (ImageView) findViewById(R.id.add_homepage_photo_imageview);
         mTitle = (EditText) findViewById(R.id.add_homepage_title_edittext);
@@ -94,18 +76,57 @@ public class AddHomePage extends AppCompatActivity implements View.OnClickListen
         mText = (EditText) findViewById(R.id.add_homepage_text_edittext);
         mFab = (FloatingActionButton) findViewById(R.id.add_homepage_add_fab);
         mFabLoc = (FloatingActionButton) findViewById(R.id.add_homepage_location_fab);
-        mImageTool = new ImageTool(this);
     }
 
-    private void loadInfo() {
+    /**
+     *Set the listener of the location fab, confirmation fab and photo
+     */
+    private void setListener() {
+        mFab.setOnClickListener(this);
+        mFabLoc.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
+    }
+
+    /**
+     * Implement the onClick method
+     * @param v
+     */
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.add_homepage_add_fab:
+                storeInfo();
+                Snackbar.make(v, Constants.ADD_SUCCESSFULLY, Snackbar.LENGTH_LONG).show();
+                finish();
+                break;
+            case R.id.add_homepage_location_fab:
+                intent = new Intent(AddDiary.this, MapsActivity.class);
+                startActivityForResult(intent, Constants.REQUEST_MAP);
+                break;
+            case R.id.add_homepage_photo_imageview:
+                mImageTool.gallery();
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Load the current datetime
+     */
+    private void loadDatetime() {
         mMomentDate = System.currentTimeMillis();
         mDate.setText(DateProcess.getDatetimeAsString(mMomentDate));
     }
 
+    /**
+     * Store all the information of the diary
+     */
     private void storeInfo() {
         mDiary = new Diary();
         String pictureName = String.valueOf(mMomentDate);
-        String photoUrl = Constants.PIC_URLS[0] + pictureName + Constants.PIC_FOMATE;
+        String photoUrl = Constants.PIC_URLS[0] + pictureName + Constants.PIC_FORMAT;
         if (mBitmap != null) {
             mImageTool.saveBitmapTOFile(mBitmap, Constants.PIC_URLS[0], pictureName);
         }
