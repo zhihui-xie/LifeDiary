@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         mMainMenu = new MainMenu(this, mFragmentManager, false, true);
         mMainMenu.initSystemBar(this);
         createImageFolder();
-        testMethod();
+        if (Diary.listAll(Diary.class).size() == 0) {
+            testMethod();
+        }
+
 
     }
 
