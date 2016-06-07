@@ -45,8 +45,8 @@
     <string name="add_day_title">Title :</string>
     <string name="add_day_date">Date :</string>
     <string name="add_day_detail">Detail :</string>
-    <string name="urgent">Urgent Plans :</string>
-    <string name="normal">Normal Plans :</string>
+    <string name="urgent">Total Urgent Plans :</string>
+    <string name="normal">Total Normal Plans :</string>
     <string name="plan_number">20</string>
 
 </resources>

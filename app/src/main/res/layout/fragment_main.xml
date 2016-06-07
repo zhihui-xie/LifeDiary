@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/fragment_main_photo_imageview"
@@ -11,7 +12,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/fragment_main_image_margin"
         android:scaleType="fitXY"
-        android:src="@mipmap/photo_default" />
+        android:src="@drawable/homepage_default" />
 
     <TextView
         android:id="@+id/fragment_main_title_textview"

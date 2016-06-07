@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-
+            android:background="@drawable/record_cover"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/record_title"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="35sp"
                 android:layout_centerInParent="true"/>
 
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
+            android:background="@color/record_diary_background"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -45,6 +45,7 @@
                 android:textSize="30sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="100dp"
+                android:textColor="@color/black"
                 />
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_diary_fab"
@@ -64,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
+            android:background="@color/record_day_background"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -73,6 +74,7 @@
                 android:textSize="30sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="100dp"
+                android:textColor="@color/black"
                 />
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_day_fab"
@@ -91,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
+            android:background="@color/record_plan_background"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -100,6 +102,7 @@
                 android:textSize="30sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="100dp"
+                android:textColor="@color/black"
                 />
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/record_function_main_plan_fab"

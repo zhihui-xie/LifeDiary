@@ -21,6 +21,9 @@
     <color name="colorOverlay">#50ffffff</color>
     <color name="colorAccentOverlay">#1400bcd4</color>
     <color name="colorTransparentBlack">#14000000</color>
+    <color name="record_diary_background">#fff9c4</color>
+    <color name="record_day_background">#c8e6c9</color>
+    <color name="record_plan_background">#bbdefb</color>
 
 
 </resources>

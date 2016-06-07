@@ -38,14 +38,14 @@ public class PlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mMainMenu.initSystemBar(this);
         init();
 
         if(Plan.listAll(Plan.class).size() == 0){
             testMethod();
         }
-        
+
         ButterKnife.bind(this);
         setupBlurView();
         setupViewPager();

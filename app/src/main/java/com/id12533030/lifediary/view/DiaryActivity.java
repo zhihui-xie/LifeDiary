@@ -50,7 +50,7 @@ public class DiaryActivity extends AppCompatActivity implements CompactCalendarV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_main);
         mFragmentManager = getSupportFragmentManager();
-        mMainMenu = new MainMenu(this, mFragmentManager, false, true);
+        mMainMenu = new MainMenu(this, mFragmentManager, true, true);
         mMainMenu.initSystemBar(this);
         mAllDiaryList = (ArrayList<Diary>) Diary.listAll(Diary.class);
         init();
