@@ -43,7 +43,7 @@ public class AddDiary extends AppCompatActivity implements View.OnClickListener 
     private FloatingActionButton mFabLoc;
     private long mMomentDate;
     private Diary mDiary;
-    private static Bitmap mBitmap;
+    private Bitmap mBitmap;
     private static String mStrLoc = "";
 
     /**
